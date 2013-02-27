@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="its" namespace="/its" extends="struts-default">
+		
+        	
+        <action name="saveIssue" class="com.its.action.SaveIssueAction">
+        	<result name="input">/portal/editIssue.jsp</result>
+        	<result name="success" type="redirectAction">viewIssues</result>
+        </action>
+
+        <action name="editIssue" class="com.its.action.RetrieveIssueAction">
+        	<result name="input">/portal/editIssue.jsp</result>
+        	<result name="success" >/portal/editIssue.jsp</result>
+        </action>
+        
+         <action name="viewIssues" class="com.its.action.ViewIssuesAction">
+             <result name="input">/portal/viewIssues.jsp</result>
+        	<result name="success" >/portal/viewIssues.jsp</result>
+        </action>
+        
+         <action name="deleteIssues" class="com.its.action.ViewIssuesAction">
+        	<result>/portal/viewIssues.jsp</result>
+        </action>
+        
+        <action name="onDemandBackup" class="com.its.action.onDemandBackUpAction" >
+			<result name="input">/portal/onDemandBackup.jsp</result>
+			<result name="success" >/portal/onDemandBackup.jsp</result>
+		</action> 
+		
+    </package>
+</struts>

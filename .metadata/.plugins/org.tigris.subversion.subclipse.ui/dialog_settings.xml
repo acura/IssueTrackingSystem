@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="243" key="RevertDialog.location.x"/>
+	<item value="81" key="RevertDialog.location.y"/>
+	<item value="1" key="RevertDialog.sortColumn"/>
+	<item value="539" key="RevertDialog.size.x"/>
+	<item value="432" key="RevertDialog.size.y"/>
+	<item value="1" key="CommitDialog.sortColumn"/>
+	<item value="150" key="CommitDialog.column2"/>
+	<item value="739" key="CompareDialog.size.y"/>
+	<item value="150" key="CommitDialog.column1"/>
+	<item value="1024" key="CompareDialog.size.x"/>
+	<item value="0" key="CompareDialog.location.y"/>
+	<item value="150" key="CommitDialog.column3"/>
+	<item value="0" key="CompareDialog.location.x"/>
+	<item value="20" key="CommitDialog.column0"/>
+	<item value="555" key="CommitDialog.weights.0"/>
+	<item value="444" key="CommitDialog.weights.1"/>
+	<item value="150" key="RevertDialog.column3"/>
+	<item value="150" key="RevertDialog.column2"/>
+	<item value="150" key="RevertDialog.column1"/>
+	<item value="14" key="CommitDialog.location.y"/>
+	<item value="false" key="CommitDialog.sortReversed"/>
+	<item value="20" key="RevertDialog.column0"/>
+	<item value="233" key="CommitDialog.location.x"/>
+	<item value="636" key="CommitDialog.size.x"/>
+	<item value="533" key="CommitDialog.size.y"/>
+	<item value="false" key="RevertDialog.sortReversed"/>
+</section>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>its</display-name>
+	
+	<context-param>
+		<param-name>MYSQL_JDBC_DRIVER</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>MYSQL_URL</param-name>
+		<param-value>jdbc:mysql://localhost:3306/its_system</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>MYSQL_USER</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>MYSQL_PASSWORD</param-name>
+		<param-value>java</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>fileUploadPath</param-name>
+		<param-value>C:/acura/uploadfiles</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>backupFilePath</param-name>
+		<param-value>C:/acura/backup/</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>DBStartUpServlet</servlet-name>
+		<servlet-class>com.servlet.DBStartUpServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<filter>     
+		<filter-name>authenticationFilter</filter-name>     
+		<filter-class>com.filter.AuthenticationFilter</filter-class>     
+		<init-param>         
+			<param-name>test-param</param-name>         
+			<param-value>This parameter is for testing.</param-value>     
+		</init-param> 
+	</filter>
+	<filter-mapping>
+		<filter-name>authenticationFilter</filter-name>     
+		<url-pattern>/its/*</url-pattern> 
+	</filter-mapping>  
+	
+	<filter-mapping>
+		<filter-name>authenticationFilter</filter-name>     
+		<url-pattern>/portal/*</url-pattern> 
+	</filter-mapping> 
+	  
+    <filter-mapping>
+		<filter-name>authenticationFilter</filter-name>
+		<url-pattern>/reports/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>authenticationFilter</filter-name>
+		<url-pattern>/jsp/*</url-pattern>    
+	</filter-mapping>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/its/*</url-pattern>
+    </filter-mapping>
+      <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/portal/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping> 
+        <filter-name>struts2</filter-name> 
+        <url-pattern>/struts/*</url-pattern> 
+	</filter-mapping>
+	<filter-mapping> 
+        <filter-name>struts2</filter-name> 
+        <url-pattern>/login/*</url-pattern> 
+	</filter-mapping>
+
+	<context-param>
+	  <param-name>jmesaPreferencesLocation</param-name> 
+	  <param-value>WEB-INF/jmesa.properties</param-value> 
+	</context-param>
+	<filter>
+	  <filter-name>Sitemesh</filter-name> 
+	  <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class> 
+	</filter>
+	<filter-mapping>
+	  <filter-name>Sitemesh</filter-name> 
+	  <url-pattern>/*</url-pattern> 
+	</filter-mapping>
+	<servlet>
+	  <servlet-name>PresidentController</servlet-name> 
+	  <servlet-class>org.jmesalive.controller.PresidentController</servlet-class> 
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>PresidentController</servlet-name> 
+	  <url-pattern>/PresidentController</url-pattern> 
+	</servlet-mapping>
+	<servlet>
+	  <servlet-name>worksheet</servlet-name> 
+	  <servlet-class>org.jmesa.worksheet.servlet.WorksheetServlet</servlet-class> 
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>worksheet</servlet-name> 
+	  <url-pattern>*.wrk</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>Download</display-name>
+		<servlet-name>Download</servlet-name>
+		<servlet-class>
+		com.poratl.servlet.Download</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Download</servlet-name>
+		<url-pattern>/Download/*</url-pattern>
+	</servlet-mapping>
+	<error-page>
+        <error-code>500</error-code>
+        <location>/portal/exceptionHandler.jsp</location>
+    </error-page>
+    
+	<error-page>
+        <error-code>404</error-code>
+        <location>/portal/exceptionHandler.jsp</location>
+    </error-page>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<session-config>
+      <session-timeout>720</session-timeout> 
+    </session-config>
+	
+</web-app>

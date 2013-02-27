@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;its-server/ddl/portal_table.sql&apos; to &apos;its_table.sql&apos;" description="Rename resource &apos;portal_table.sql&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="ddl/portal_table.sql" name="its_table.sql" stamp="1361187504171" updateReferences="true"/>
+</session>

@@ -1,0 +1,109 @@
+package com.its.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.its.domain.Issue;
+import com.its.util.DateUtils;
+import com.its.util.GenericUtils;
+
+public class RetrieveIssueAction extends IssueAction
+{
+public String execute() throws Exception
+  {
+	String oid = getServletRequest().getParameter("oid");
+	if(GenericUtils.isNotNullOrEmpty(oid))
+	{
+		Issue issueObj = getIssueService().getIssueByOid(Integer.parseInt(oid));	
+		this.setOid(issueObj.getOid());
+		this.setDeveloper(issueObj.getDeveloper());
+		
+		if (issueObj.getProject() != null &&
+				!issueObj.getProject().isEmpty())
+		{
+			String projectNameLst = issueObj.getProject();
+			String prNameLst[] = projectNameLst.split(",");
+			String selectedProjectNameSelectTag = "";
+			System.out.println("######### prNameLst[]:"+prNameLst);
+			selectedProjectNameSelectTag += 
+				"<tr>" +
+				"<select name=\"project\" multiple=\"multiple\" >" +
+				"<option></option>";
+				
+			
+			for (String s : prNameLst)
+			{	
+				if (s.equalsIgnoreCase("GynoSoft"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"GynoSoft\" selected >GynoSoft</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"GynoSoft\" >GynoSoft</option>";
+				}
+				if (s.equalsIgnoreCase("Prolab"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"Prolab\" selected >Prolab</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"Prolab\" >Prolab</option>";
+				}
+				if (s.equalsIgnoreCase("GenSoft"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"GenSoft\" selected >GenSoft</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"GenSoft\" >GenSoft</option>";
+				}
+				if (s.equalsIgnoreCase("Prescription"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"Prescription\" selected >Prescription</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"Prescription\" >Prescription</option>";
+				}
+				if (s.equalsIgnoreCase("VBS"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"VBS\" selected >VBS</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"VBS\" >VBS</option>";
+				}
+				if (s.equalsIgnoreCase("UAS"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"UAS\" selected >UAS</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"UAS\" >UAS</option>";
+				}
+				if (s.equalsIgnoreCase("ITS"))
+				{	
+					selectedProjectNameSelectTag += "<option value=\"ITS\" selected >ITS</option>";
+				}
+				else
+				{	
+					selectedProjectNameSelectTag += "<option value=\"ITS\" >ITS</option>";
+				}
+			}
+			selectedProjectNameSelectTag +="</select>" +
+				"</tr>";
+			getServletRequest().setAttribute("selectedProjectNameList", selectedProjectNameSelectTag);
+		}
+		
+		this.setProject(issueObj.getProject());
+		this.setIssueNo(issueObj.getIssueNo());
+		this.setIssueDate(DateUtils.getDateAsDDMMYYYYFromMysqlDate(issueObj.getIssueDate()));
+		this.setHours(issueObj.getHours());
+		this.setComment(issueObj.getComment());
+		this.setActivity(issueObj.getActivity());
+	}
+	//int oid1=Integer.parseInt(oid);
+	//getIssueService().deleteIssuesBy(5);
+ return SUCCESS;	
+ }
+}

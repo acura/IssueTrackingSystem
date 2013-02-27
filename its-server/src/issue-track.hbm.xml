@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.its.domain.Issue" table="its_master">
+		
+		<id name="oid" type="int" column="oid">
+	   		<generator class="increment"/>
+	  	</id>
+	  	
+	  	<property name="developer" type="java.lang.String">
+			<column name="developer_name" />			
+	  	</property>
+	  	
+	  	<property name="issueNo" type="java.lang.String">
+			<column name="issue_no" />			
+	  	</property>
+	  	
+	  	<property name="project" type="java.lang.String">
+			<column name="project" />			
+	  	</property>
+	  	
+	  	<property name="issueDate" type="date">
+	  		<column name="issue_date" />
+	  	</property>
+	  	
+	  	<property name="hours" type="double">
+			<column name="hours" />			
+	  	</property>
+	  	
+	  	<property name="comment" type="java.lang.String">
+			<column name="comment" />			
+	  	</property>
+	  	
+	  	<property name="activity" type="java.lang.String">
+			<column name="activity" />			
+	  	</property>
+	  	
+	  	<property name="createdDate" type="timestamp">
+			<column name="created_date" />			
+	  	</property>
+	  	
+	  	
+	  	<property name="lastUpdatedDate" type="timestamp">
+			<column name="last_updated_date" />			
+	  	</property>
+	  	
+	  	
+	  	
+	  	
+	</class>
+</hibernate-mapping>
+
+

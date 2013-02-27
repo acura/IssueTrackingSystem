@@ -1,0 +1,367 @@
+.bodyClass { background: url(../css/bp/background2.jpg);
+	
+}
+
+.mainTable {
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding-left: 0px;
+	width: 100%;
+	/*background: url(../images/background3bg.png);*/
+}
+
+.screenHeader { /*background: url(../images/wood-texture.jpg);*/
+	height: 27px;
+	text-align: center;
+	border-left: 1px solid RGB(203, 216, 222);
+	border-right: 1px solid RGB(203, 216, 222);
+	border: 1px solid white;
+}
+
+.screenHeaderNew { /* background: url(../images/background4.png);*/
+	height: 25px;
+	text-align: center;
+	border-left: 1px solid RGB(203, 216, 222);
+	border-right: 1px solid RGB(203, 216, 222);
+}
+
+.screenHeaderSpan {
+	color: white;
+	font-size: Medium;
+	font-weight: bold;
+}
+
+.scrollableDiv {
+	overflow-y: scroll;
+	border: 1px solid white;
+	border-top: none;
+	overflow-x: hidden;
+}
+
+.fixedDiv {
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.buttonDiv {
+	height: 30px;
+	/*background: url(../images/background4.png);*/
+	text-align: center;
+	border-bottom: 1px solid RGB(203, 216, 222);
+	border-left: 1px solid RGB(203, 216, 222);
+	border-right: 1px solid RGB(203, 216, 222);
+	text-align: center;
+}
+
+.scrollableDivJMesa {
+	height: 380px;
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivJMesaForEmailReports {
+	overflow-y: auto;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivJMesaForPatientHistory {
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+	vertical-align: top;
+}
+
+.scrollableDivJMesaForSearch {
+	height: 200px;
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDiveJmesaForSearchLabTestResult {
+	height: 322px;
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivForInfo {
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivForBillingHistory {
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivForBillingHistory {
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.div1ForBillingHistory {
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.div2ForBillingHistory {
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollabeDivForIndependantBillingHistory {
+	border: 1px solid RGB(203, 216, 222);
+	vertical-align: top;
+}
+
+.scrollabeDivForCollectionReport {
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+	vertical-align: top;
+}
+
+.scrollableDivForAllBillingHistory {
+	height: 300px;
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivCompleteJMesa {
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+	margin-top: 0%;
+}
+
+.divForJmesa {
+	border: 1px solid RGB(203, 216, 222);
+	margin-top: 0%;
+}
+
+.subComponentDiv {
+	border: 1px solid RGB(203, 216, 222);
+	background: url(../images/white.jpg);
+	width: 100%;
+	text-align: center;
+}
+
+.subComponentDiv11{
+	border:1px solid RGB(203, 216, 222);
+	background-color: white;
+	overflow:none;
+	z-index: 1;
+	height: 700px;
+}
+
+
+.searchFieldsDiv {
+	/*border-left: 1px solid RGB(203, 216, 222);*/
+	border: 1px solid white;
+	background: url(../images/searchwhite.jpg);
+}
+
+.scrollableDivForDrugGroup {
+	height: 325px;
+	overflow-y: auto;
+}
+
+.scrollableDivForSensitivity {
+	height: 200px;
+	overflow-y: auto;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivForBioChemicalTemplate {
+	height: 170px;
+	overflow-y: auto;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.scrollableDivForCharges {
+	height: 150px;
+	width: 770px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border: 1px solid RGB(203, 216, 222);
+}
+
+.tabularFormat {
+	border: 1px solid RGB(203, 216, 222);
+	background-color: #99bccc;
+}
+
+.popupMainTable {
+	border: 1px solid RGB(203, 216, 222);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background: url(../images/background44n.png);
+	width: 430px;
+	height: 250px;
+	text-align: center;
+}
+
+.popupForEmail {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background: url(../images/white.jpg);
+	text-align: center;
+}
+
+.popupMainSearchUserTable {
+	border: 1px solid RGB(203, 216, 222);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 250px;
+	text-align: center;
+}
+
+.popupScreenHeader { /*	background: url(../images/background4.png);*/
+	height: 27px;
+	/*text-align: center;*/
+}
+
+.popupWindowScrollableDiv {
+	height: 620px;
+	overflow-y: auto;
+}
+
+.popupWindowScrollableDivForGetUserInfo {
+	height: 280px;
+	width: 440px;
+	overflow-y: scroll;
+}
+
+.oddRow {
+	border-bottom: 1px solid RGB(203, 216, 222);
+}
+
+.evenRow {
+	border-bottom: 1px solid RGB(203, 216, 222);
+}
+
+.onlineUserHeaderDiv {
+	background: #fff url(../images/menuback.png) repeat-x;
+	height: 35px;
+	width: 995px;
+	border-bottom: 1px solid RGB(203, 216, 222);
+}
+
+.jmesaHTMLTable {
+	background-color: #99cccc;
+}
+
+.scrollableDivForCustomTestDetails {
+	border: 1px solid RGB(203, 216, 222);
+	height: 192px;
+	overflow-y: scroll;
+}
+
+.scrollableDivForCustomTestResultDetail {
+	width: 880px;
+	overflow-x: auto;
+}
+
+.auditField {
+	background-color: yellow;
+	font-weight: bold;
+}
+
+.scrollableDivForLabBillPaymentJMesa {
+	vertical-align: top;
+	height: 250px;
+	overflow-y: scroll;
+	border: 1px solid RGB(203, 216, 222);
+	margin-top: 0%;
+}
+
+.checkBox {
+	position: static fixed;
+}
+
+.errorMessage {
+	color: red;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+.textAreaFontFamily {
+	font-family: arial;
+}
+
+#header	
+{ 
+	width:534px; 
+	height:118px; 
+	text-align:center;
+	border-left: thin solid black;
+	border-right: thin solid black;
+	border-top: thin solid black; 
+	background:url(../images/header.png);}	
+	
+#header1	
+{ 
+	width:534px; 
+	height:122px; 
+	text-align:center;
+	border-left: thin solid black;
+	border-right: thin solid black;
+	border-top: thin solid black; 
+	background:url(../images/prelogo1.png);}	
+	
+#preFont
+{
+ text-align: center;
+ font-weight: bold;
+}
+
+.screenHeaderTd{
+text-align: center;
+background: url(../images/headerback.png);
+z-index: 100;
+border: 1px solid white;
+}
+
+.caseBack{
+text-align:center;
+background: url(../images/headerback.png);
+z-index: 100;
+border: 1px solid white;
+}
+
+.screenHeader1 { background: url(../images/headerback.png);
+	height: 27px;
+	text-align: center;
+	border-left: 1px solid RGB(203, 216, 222);
+	border-right: 1px solid RGB(203, 216, 222);
+	border: 1px solid white;
+}
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+border: 1px solid;
+margin: 10px 0px;
+padding:2px 2px 2px 30px;
+background-repeat: no-repeat;
+background-position: 10px center;-moz-border-radius:.5em;
+-webkit-border-radius:.5em;
+border-radius:.5em;
+height: 40px;
+}
+.isa_info {
+color: #00529B;
+background-color: #BDE5F8;
+background-image: url('info.png');
+}
+.isa_success {
+color: #4F8A10;
+background-color: #DFF2BF;
+background-image:url('../images/success.png');
+background-repeat:no-repeat;
+ background-position:40%; 
+ 
+}
+.isa_warning {
+color: #9F6000;
+background-color: #FEEFB3;
+background-image: url('warning.png');
+}
+.isa_error {
+color: #D8000C;
+background-color: #FFBABA;
+background-image: url('../images/error.png');
+background-repeat:no-repeat;
+ background-position:30%; 
+
+

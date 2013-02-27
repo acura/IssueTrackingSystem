@@ -1,0 +1,6 @@
+INDEX VERSION 1.121+E:\projects\Issue-Tracking-System2013\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1707475933.index
+813166875.index
+4129753288.index
+3392526574.index
+372659818.index

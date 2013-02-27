@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="com.its.util.DateUtils"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableModel"/>
+<fullyQualifiedTypeName name="org.apache.poi.hssf.record.formula.functions.Column"/>
+<fullyQualifiedTypeName name="com.lowagie.text.Table"/>
+<fullyQualifiedTypeName name="com.lowagie.text.Row"/>
+<fullyQualifiedTypeName name="com.its.domain.Issue"/>
+<fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.ServletRequestAware"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.ServletResponseAware"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.apache.commons.lang.time.DateUtils"/>
+<fullyQualifiedTypeName name="com.util.mail.EmailUtils"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.its.domain.IssueDO"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.StaticApplicationContext"/>
+</qualifiedTypeNameHistroy>

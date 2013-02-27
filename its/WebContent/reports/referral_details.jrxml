@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="referral_details" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="ReferralDetails">
+		<parameter name="referralOid" class="java.lang.Integer"/>
+		<parameter name="toDay" class="java.lang.String"/>
+		<parameter name="startDateOfWeek" class="java.lang.String"/>
+		<parameter name="startDateOfMonth" class="java.lang.String"/>
+		<parameter name="rangeStartDate" class="java.lang.String"/>
+		<parameter name="rangeEndDate" class="java.lang.String"/>
+		<parameter name="period" class="java.lang.String"/>
+		<parameter name="referralName" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{referralName}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select txn_date, concat(user.first_name,' ',user.last_name)'patient name', txn_type, user.tot_remaining_bal, actual_bill_paid , referral_amount
+from hms_referral_info, hms_user user
+where CASE WHEN $P{referralOid} != '' THEN referral_oid = $P{referralOid} ELSE 1=1 END
+and CASE WHEN $P{period} = 'Today' THEN txn_date = $P{toDay} ELSE 1=1 END
+and CASE WHEN $P{period} = 'Week' THEN txn_date between $P{startDateOfWeek} and $P{toDay} ELSE 1=1 END
+and CASE WHEN $P{period} = 'Month' THEN txn_date between $P{startDateOfMonth} and $P{toDay} ELSE 1=1 END
+and CASE WHEN $P{period} = 'DateRange' THEN txn_date between $P{rangeStartDate} and $P{rangeEndDate} ELSE 1=1 END
+and hms_user_id = user.user_id;]]>
+		</queryString>
+		<field name="txn_date" class="java.sql.Date"/>
+		<field name="patient name" class="java.lang.String"/>
+		<field name="txn_type" class="java.lang.String"/>
+		<field name="tot_remaining_bal" class="java.lang.Double"/>
+		<field name="actual_bill_paid" class="java.lang.Double"/>
+		<field name="referral_amount" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="referralOid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{referralOid}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="outStandingBalance" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[$P{outStandingBalance}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="amountPaidByPatient" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[$P{amountPaidByPatient}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="referralAmount" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[$P{referralAmount}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="toDay" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{toDay}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startDateOfWeek" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{startDateOfWeek}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startDateOfMonth" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{startDateOfMonth}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rangeStartDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{rangeStartDate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rangeEndDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{rangeEndDate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="period" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{period}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="referralName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{referralName}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1]]>
+	</queryString>
+	<field name="1" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="179" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="10" y="111" width="458" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ReferralDetails">
+						<datasetParameter name="referralOid">
+							<datasetParameterExpression><![CDATA[$P{referralOid}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="period">
+							<datasetParameterExpression><![CDATA[$P{period}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="toDay">
+							<datasetParameterExpression><![CDATA[$P{toDay}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="startDateOfWeek">
+							<datasetParameterExpression><![CDATA[$P{startDateOfWeek}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="startDateOfMonth">
+							<datasetParameterExpression><![CDATA[$P{startDateOfMonth}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="rangeStartDate">
+							<datasetParameterExpression><![CDATA[$P{rangeStartDate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="rangeEndDate">
+							<datasetParameterExpression><![CDATA[$P{rangeEndDate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="60">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Payment Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="60" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.util.Date"><![CDATA[$F{txn_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Patient Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="110" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{patient name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="98">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="98" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Referral Register]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="98" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{txn_type}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Outstanding Balance]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_remaining_bal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Amount Paid By Pateint]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="#0.00">
+								<reportElement x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{actual_bill_paid}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="75" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Referral Amount]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="75" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{referral_amount}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="10" y="70" width="100" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referral Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="46" width="100" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="115" y="46" width="100" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="70" width="353" height="20" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{referralName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="37" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="35" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="216" y="6" width="139" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referral Statement ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="253" y="0" width="169" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Total Out Standing Balacnce Rs.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="18" width="169" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Total Amount Paid By Patient Rs.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="36" width="159" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Total Referral Amount Rs.:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="426" y="0" width="104" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{outStandingBalance}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#0.00" isBlankWhenNull="true">
+				<reportElement x="426" y="16" width="104" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{amountPaidByPatient}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#0.00" isBlankWhenNull="true">
+				<reportElement x="426" y="33" width="104" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{referralAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

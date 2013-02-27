@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="opd_details" language="groovy" pageWidth="900" pageHeight="595" orientation="Landscape" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     vhm_opd_details.`pet_owner_name` AS vhm_opd_details_pet_owner_name,
+     vhm_opd_details.`village_or_town` AS vhm_opd_details_village_or_town,
+     vhm_opd_details.`type_of_animal` AS vhm_opd_details_type_of_animal,
+     vhm_opd_details.`SUMMARY_PARAMETER` AS vhm_opd_details_SUMMARY_PARAMETER,
+     vhm_opd_details.`diagnosis` AS vhm_opd_details_diagnosis,
+     vhm_opd_details.`fees` AS vhm_opd_details_fees,
+     vhm_opd_details.`checkup_date` AS vhm_opd_details_checkup_date
+FROM
+     `vhm_opd_details` vhm_opd_details
+ORDER BY vhm_opd_details.`checkup_date`]]>
+	</queryString>
+	<field name="vhm_opd_details_pet_owner_name" class="java.lang.String"/>
+	<field name="vhm_opd_details_village_or_town" class="java.lang.String"/>
+	<field name="vhm_opd_details_type_of_animal" class="java.lang.String"/>
+	<field name="vhm_opd_details_SUMMARY_PARAMETER" class="java.lang.String"/>
+	<field name="vhm_opd_details_diagnosis" class="java.lang.String"/>
+	<field name="vhm_opd_details_fees" class="java.lang.Double"/>
+	<field name="vhm_opd_details_checkup_date" class="java.sql.Date"/>
+	<group name="vhm_opd_details_checkup_date">
+		<groupExpression><![CDATA[$F{vhm_opd_details_checkup_date}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<frame>
+					<reportElement mode="Opaque" x="2" y="0" width="858" height="50" forecolor="#B89F7D" backcolor="#FFFFFF"/>
+				</frame>
+				<textField pattern="dd-MMM-yyyy">
+					<reportElement style="SubTitle" x="97" y="9" width="279" height="22" forecolor="#FF0033" backcolor="#F0F0F0"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="12" isBold="false" isItalic="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[$F{vhm_opd_details_checkup_date}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Title" x="2" y="9" width="95" height="23" forecolor="#FF0000" backcolor="#F0F0F0"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="12" isBold="false" isItalic="true" isUnderline="false" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Checkup Date]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="193" y="0" width="404" height="69"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Veterinary Hospital Management]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="288" y="69" width="215" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[OPD Details Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="1" width="248" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Pet_owner_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="248" y="1" width="133" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Village Or Town]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="381" y="1" width="122" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Type of Animal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="503" y="1" width="202" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Summary Parameter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="705" y="1" width="73" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Diagnosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="778" y="1" width="82" height="15" forecolor="#736343"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fees]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="860" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="381" y="0" width="122" height="18"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{vhm_opd_details_type_of_animal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="249" y="0" width="132" height="18"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{vhm_opd_details_village_or_town}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="1" y="0" width="248" height="18"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{vhm_opd_details_pet_owner_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="705" y="0" width="73" height="18"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{vhm_opd_details_diagnosis}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="503" y="0" width="202" height="18"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{vhm_opd_details_SUMMARY_PARAMETER}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="778" y="0" width="82" height="18"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{vhm_opd_details_fees}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="1" y="1" width="859" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="819" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="739" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="2" width="197" height="20" forecolor="#736343"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

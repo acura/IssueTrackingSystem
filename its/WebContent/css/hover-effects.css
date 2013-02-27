@@ -1,0 +1,43 @@
+/* CSS Document */
+*{padding:0; margin:0;}
+#main {width:92%; height: 70%; text-align: center; border:1px solid #CCCCCC; overflow:hidden; margin:0 auto; -moz-border-radius: 5px;
+-webkit-border-radius: 5px; padding-top: 10px; padding-bottom: 10px; padding-left:20px;  margin-top:0px; }
+#main h3 {font-family:'Droid Sans', arial; font-weight:bold; font-size:50px; letter-spacing:-2px; text-shadow:1px 2px 2px #999; padding:0 8px;}
+#main p {font-family:Georgia, arial; font-size:16px; background:#ececec;-moz-border-radius: 5px;
+-webkit-border-radius: 5px; padding:20px;  border:1px solid #d2d2d2; clear:both; margin:25px 8px;  text-shadow:0 1px 1px #fff; }
+#main a {float:right; font-family:Georgia; font-size:16px; text-decoration:none; color:#990000; position:relative;}
+
+
+ul {padding:0; margin:0;}
+ul li {float:left; list-style:none; padding:10px; margin:10px; line-height:10px; width:190px; height:190px; overflow:hidden; border:1px solid #d2d2d2;-moz-border-radius: 5px;
+-webkit-border-radius: 5px; background:#ececec;}
+/*dynamically added*/
+div.wrapper{width:190px; height:190px; overflow:hidden; position:relative;  }
+
+/*generic style for all div */
+div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 25px; background:url(images/caption-bg.png) repeat-x; min-height:125px; color:#d20000; text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+
+/*white fade*/
+ul li:nth-child(1) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(254,0,0); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+/*city*/
+ul li:nth-child(2) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(158,46,207); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+/*wood*/
+ul li:nth-child(3) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(255,149,28); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+/*grass*/
+ul li:nth-child(4) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(23,23,255); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+/*w*/
+ul li:nth-child(5) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(109,155,47); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+/*grungy*/
+ul li:nth-child(6) div.caption {font-family:'Reenie Beanie',arial;  font-weight:bold; font-size:26px;  letter-spacing:-2px; position:relative; text-align:center; padding:47px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(88,122,37); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:28px;}
+ul li:nth-child(7) div.caption {font-family:'Reenie Beanie',arial;  font-weight:bold; font-size:26px;  letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(225,94,4); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+ul li:nth-child(8) div.caption {font-family:'Reenie Beanie',arial;  font-weight:bold; font-size:26px;  letter-spacing:-2px; position:relative; text-align:center; padding:48px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(3,121,0); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:28px;}
+ul li:nth-child(9) div.caption {font-family:'Reenie Beanie',arial;  font-weight:bold; font-size:26px;  letter-spacing:-2px; position:relative; text-align:center; padding:55px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(138,0,138); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+ul li:nth-child(10) div.caption {font-family:'Reenie Beanie',arial; font-weight:bold; font-size:26px; letter-spacing:-2px; position:relative; text-align:center; padding:35px 15px 15px 15px; background:url(../images/images/caption-bg.png) repeat-x; min-height:125px; color:rgb(0,86,168); text-shadow:0 1px 1px #999; text-transform:capitalize; line-height:30px;}
+
+
+
+
+
+
+
+

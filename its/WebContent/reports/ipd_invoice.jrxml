@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipd_invoice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="154"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="billing_header">
+		<parameter name="ipdInvoiceOid" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[select a.oid, a.charge_label, b.charge_amount
+from hms_billing_header as a
+left outer join hms_ipd_invoice_details as b
+on b.billing_header_oid = a.oid
+and b.invoice_oid = $P{ipdInvoiceOid}
+order by a.oid]]>
+		</queryString>
+		<field name="oid" class="java.lang.Integer"/>
+		<field name="charge_label" class="java.lang.String"/>
+		<field name="charge_amount" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="invoiceNumber" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{invoiceNumber}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firstName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{firstName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="middleName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{middleName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lastName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{lastName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{fromDate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="toDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{toDate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="diagnosis" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{diagnosis}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ipdInvoiceOid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{ipdInvoiceOid}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="invoiceDate" class="java.lang.String"/>
+	<parameter name="amtInWords" class="java.lang.String"/>
+	<parameter name="totalCharges" class="java.lang.Double"/>
+	<parameter name="totalPayment" class="java.lang.Double"/>
+	<parameter name="hospitalName" class="java.lang.String"/>
+	<parameter name="hospitalAddress" class="java.lang.String"/>
+	<parameter name="hospitalContactNumber" class="java.lang.String"/>
+	<parameter name="totRemainingBal" class="java.lang.Double"/>
+	<parameter name="invoiceBalance" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[select concat($P{firstName},' ',$P{middleName},' ',$P{lastName})'patient_name']]>
+	</queryString>
+	<field name="patient_name" class="java.lang.String"/>
+	<variable name="amountRemaining" class="java.lang.Double">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="248" splitType="Stretch">
+			<staticText>
+				<reportElement x="92" y="148" width="49" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill No. :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="170" width="44" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="188" width="140" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill for the period From :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="188" width="28" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="206" width="65" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosis :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="136" y="170" width="331" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patient_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="148" width="133" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{invoiceNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="225" y="188" width="111" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="367" y="188" width="98" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{toDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="157" y="206" width="310" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{diagnosis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="292" y="150" width="72" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="366" y="150" width="100" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{invoiceDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="87" y="139" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="87" y="94" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="87" y="94" width="1" height="153"/>
+			</line>
+			<line>
+				<reportElement x="487" y="95" width="1" height="153"/>
+			</line>
+			<line>
+				<reportElement x="87" y="226" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="87" y="247" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="349" y="226" width="1" height="21"/>
+			</line>
+			<staticText>
+				<reportElement x="393" y="228" width="90" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Rs.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="107" y="101" width="356" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{hospitalName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="96" y="125" width="220" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{hospitalAddress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="342" y="125" width="138" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{hospitalContactNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="316" y="125" width="25" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Tel :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="132" y="186" width="334" height="1"/>
+			</line>
+			<line>
+				<reportElement x="222" y="203" width="118" height="1"/>
+			</line>
+			<line>
+				<reportElement x="365" y="203" width="101" height="1"/>
+			</line>
+			<line>
+				<reportElement x="153" y="222" width="312" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="87" y="0" width="400" height="48"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="billing_header">
+						<datasetParameter name="ipdInvoiceOid">
+							<datasetParameterExpression><![CDATA[$P{ipdInvoiceOid}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="262">
+						<jr:detailCell height="13" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="11" y="0" width="236" height="11"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{charge_label}]]></textFieldExpression>
+							</textField>
+							<line>
+								<reportElement x="1" y="12" width="260" height="1"/>
+							</line>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="139">
+						<jr:detailCell height="13" rowSpan="1">
+							<line>
+								<reportElement x="0" y="12" width="139" height="1"/>
+							</line>
+							<line>
+								<reportElement x="0" y="0" width="1" height="12"/>
+							</line>
+							<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+								<reportElement x="6" y="0" width="104" height="11"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{charge_amount}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="178" splitType="Stretch">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="354" y="58" width="103" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{totalCharges}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="292" y="59" width="44" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="3" width="105" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="261" y="2" width="81" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{totalPayment}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="93" y="54" width="188" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{amtInWords}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="153" y="18" width="105" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice Balance]]></text>
+			</staticText>
+			<line>
+				<reportElement x="87" y="84" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="86" y="-1" width="1" height="138"/>
+			</line>
+			<line>
+				<reportElement x="487" y="0" width="1" height="137"/>
+			</line>
+			<line>
+				<reportElement x="87" y="53" width="400" height="1"/>
+			</line>
+			<line>
+				<reportElement x="260" y="0" width="1" height="53"/>
+			</line>
+			<line>
+				<reportElement x="261" y="18" width="88" height="1"/>
+			</line>
+			<line>
+				<reportElement x="86" y="137" width="400" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="348" y="117" width="126" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[For Dalavi Hospital]]></text>
+			</staticText>
+			<line>
+				<reportElement x="349" y="0" width="1" height="85"/>
+			</line>
+			<staticText>
+				<reportElement x="96" y="33" width="162" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Outstanding Balance]]></text>
+			</staticText>
+			<line>
+				<reportElement x="260" y="33" width="88" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="261" y="34" width="81" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{totRemainingBal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="261" y="18" width="81" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$P{invoiceBalance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
