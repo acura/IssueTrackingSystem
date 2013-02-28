@@ -1,4 +1,4 @@
-#Wed Feb 13 16:03:07 IST 2013
+#Wed Feb 27 16:37:08 IST 2013
 module-start-timeout=300000
-runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="Apache Tomcat v6.0" location\="E\:/apache-tomcat-6.0.29" name\="Apache Tomcat v6.0" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.60" timestamp\="0"/>\r\n</runtimes>\r\n
+runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="Apache Tomcat v6.0" location\="E\:/apache-tomcat-6.0.29" name\="Apache Tomcat v6.0" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.60" timestamp\="0"/>\r\n  <runtime id\="Apache Tomcat v5.5" location\="E\:/Acura-installation/installables/apache-tomcat-5.5.28" name\="Apache Tomcat v5.5" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.55" timestamp\="0"/>\r\n</runtimes>\r\n
 eclipse.preferences.version=1
