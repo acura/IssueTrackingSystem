@@ -22,6 +22,7 @@ import com.its.util.GenericUtils;
 @Transactional(propagation=Propagation.MANDATORY)
 public class IssueDAO 
 {
+	//message
 	@Autowired
 	private SessionFactory sessionFactory;
 	
