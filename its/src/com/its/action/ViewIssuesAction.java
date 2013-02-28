@@ -19,6 +19,7 @@ import com.its.domain.IssueDO;
 
 public class ViewIssuesAction extends IssueAction 
 {
+	//
 	private String dateSign;
 	private String developer;
 	private String issueNo;
