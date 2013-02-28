@@ -135,6 +135,9 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/repository/jmesa-3.0/jexcel-2.6.6.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/E:/repository/servlet-api.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/gensoft-web/build/classes"/>
         <property name="context-root" value="its"/>
     </wb-module>
