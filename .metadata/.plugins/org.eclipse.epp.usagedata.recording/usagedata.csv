@@ -1,4 +1,5 @@
 what,kind,bundleId,bundleVersion,description,time
+<<<<<<< HEAD
 activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362041408266
 error,log,,,"Background Indexer Crash Recovery",1362041408272
 deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362041408311
@@ -99,3 +100,30 @@ started,bundle,org.eclipse.wst.server.ui,1.1.103.v20100123,"org.eclipse.wst.serv
 executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1362043919694
 started,bundle,org.eclipse.jst.server.core,1.2.1.v20100127,"org.eclipse.jst.server.core",1362043919885
 deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043927129
+=======
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.refresh",1362041188819
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.refresh",1362041188820
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362041190654
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362042115602
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362042119757
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362042529208
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362042532608
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362042700026
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043051181
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043062437
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043080956
+opened,editor,org.eclipse.jdt.ui,3.5.1.r351_v20090821-0800,"org.eclipse.jdt.ui.CompilationUnitEditor",1362043081063
+activated,editor,org.eclipse.jdt.ui,3.5.1.r351_v20090821-0800,"org.eclipse.jdt.ui.CompilationUnitEditor",1362043081135
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.navigate.openResource",1362043081136
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1362043117571
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043120666
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043404316
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.save",1362043420999
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043423402
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043539355
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043543808
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043558654
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043565541
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043590482
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1362043590519
+>>>>>>> be587c9a48f0ab8a2344b209656fb54001da5ec0
