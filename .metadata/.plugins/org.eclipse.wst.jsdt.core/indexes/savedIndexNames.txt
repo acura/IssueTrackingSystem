@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-INDEX VERSION 1.121+E:\projects\its_clone\ITS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3950292017.index
-1707475933.index
-413768377.index
-4108706186.index
-793604207.index
-=======
 INDEX VERSION 1.121+E:\projects\ITS_Clone\ITS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 1550380356.index
 1164765994.index
-1707475933.index
 3886129461.index
 3242052949.index
->>>>>>> 537ef2332e8c552f36b34c4a01a92761f957f5a6

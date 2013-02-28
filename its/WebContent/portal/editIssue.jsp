@@ -15,6 +15,7 @@
 
 	function validateDate(dtObj, messageFieldName, centuryType)
 	{
+//
 		if(dtObj.value == '')
 		{
 			return true;
