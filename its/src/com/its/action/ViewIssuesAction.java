@@ -14,13 +14,10 @@ import org.jmesa.view.component.Table;
 
 import com.its.domain.Issue;
 import com.its.domain.IssueDO;
-
-
-
 public class ViewIssuesAction extends IssueAction 
 {
 
-	
+	///
 	//update on 28 feb
 	//Comment Added
 	private String dateSign;
