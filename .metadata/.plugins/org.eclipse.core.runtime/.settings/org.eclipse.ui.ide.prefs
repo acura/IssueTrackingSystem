@@ -1,6 +1,14 @@
+<<<<<<< HEAD
+#Wed Feb 27 17:14:51 IST 2013
+eclipse.preferences.version=1
+TASKS_FILTERS_MIGRATE=true
+tipsAndTricks=true
+platformState=1361949216605
+=======
 #Wed Feb 27 17:14:26 IST 2013
 eclipse.preferences.version=1
 TASKS_FILTERS_MIGRATE=true
 tipsAndTricks=true
 platformState=1357553907434
+>>>>>>> 537ef2332e8c552f36b34c4a01a92761f957f5a6
 PROBLEMS_FILTERS_MIGRATE=true

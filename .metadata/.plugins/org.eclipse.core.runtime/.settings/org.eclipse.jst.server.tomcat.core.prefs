@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+#Wed Feb 27 16:23:29 IST 2013
+locationorg.eclipse.jst.server.tomcat.runtime.60=E\:/apache-tomcat-6.0.29
+eclipse.preferences.version=1
+locationorg.eclipse.jst.server.tomcat.runtime.55=E\:/Acura/apache-tomcat-5.5.28
+=======
 #Wed Feb 27 16:37:08 IST 2013
 locationorg.eclipse.jst.server.tomcat.runtime.60=E\:/apache-tomcat-6.0.29
 eclipse.preferences.version=1
 locationorg.eclipse.jst.server.tomcat.runtime.55=E\:/Acura-installation/installables/apache-tomcat-5.5.28
+>>>>>>> 537ef2332e8c552f36b34c4a01a92761f957f5a6
