@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <servers>
-<<<<<<< HEAD
-  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers2/Tomcat v5.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v5.5 Server at localhost" name="Tomcat v5.5 Server at localhost" runtime-id="Apache Tomcat v5.5" server-type="org.eclipse.jst.server.tomcat.55" server-type-id="org.eclipse.jst.server.tomcat.55" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="1">
-=======
   <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v5.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v5.5 Server at localhost" name="Tomcat v5.5 Server at localhost" runtime-id="Apache Tomcat v5.5" server-type="org.eclipse.jst.server.tomcat.55" server-type-id="org.eclipse.jst.server.tomcat.55" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="1">
->>>>>>> 537ef2332e8c552f36b34c4a01a92761f957f5a6
     <list key="modules" value0="its::org.eclipse.jst.j2ee.server:its::jst.web::2.4"/>
   </server>
 </servers>

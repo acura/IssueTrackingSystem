@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/hibernate-c3p0-3.3.1.GA.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/hibernate-c3p0-3.3.1.GA.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
