@@ -7,128 +7,128 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/javassist-3.4.GA.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/javassist-3.4.GA.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/oscache-2.1.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/oscache-2.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/cglib-nodep-2.2.jar">
+	<classpathentry kind="lib" path="/../../repository/cglib-nodep-2.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/hibernate3.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/hibernate3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.beans-3.1.0.RELEASE.jar">
+	<classpathentry kind="lib" path="/../../repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.beans-3.1.0.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.context-3.1.0.RELEASE.jar">
+	<classpathentry kind="lib" path="/../../repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.context-3.1.0.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.core-3.1.0.RELEASE.jar">
+	<classpathentry kind="lib" path="/../../repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.core-3.1.0.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.transaction-3.1.0.RELEASE.jar">
+	<classpathentry kind="lib" path="/../../repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.transaction-3.1.0.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.web-3.1.0.RELEASE.jar">
+	<classpathentry kind="lib" path="/../../repository/spring-framework-3.1.0.RELEASE/dist/org.springframework.web-3.1.0.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/antlr-2.7.6.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/antlr-2.7.6.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/c3p0-0.9.1.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/c3p0-0.9.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/dom4j-1.6.1.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/dom4j-1.6.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/ehcache-1.2.3.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/ehcache-1.2.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/jta-1.1.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/jta-1.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/slf4j-log4j12.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/slf4j-log4j12.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/swarmcache-1.0RC2.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/swarmcache-1.0RC2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/struts-2.1.8.1-lib/struts-2.1.8.1/lib/commons-lang-2.3.jar">
+	<classpathentry kind="lib" path="/../../repository/struts-2.1.8.1-lib/struts-2.1.8.1/lib/commons-lang-2.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/hibernate-testing.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/hibernate-testing.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/classes12.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/classes12.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/commons-collections-3.1.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/commons-collections-3.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/hibernate-cglib-repack-2.1_3.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/hibernate-cglib-repack-2.1_3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/log4j.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/log4j.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/mysql-connector-java-5.0.4-bin.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/mysql-connector-java-5.0.4-bin.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/proxool-0.8.3.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/proxool-0.8.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="E:/repository/hibcore3.3.1/slf4j-api-1.5.2.jar">
+	<classpathentry kind="lib" path="/../../repository/hibcore3.3.1/slf4j-api-1.5.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
 		</attributes>
