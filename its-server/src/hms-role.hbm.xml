@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hms.domain.Role" table="hms_role">
+		
+		<id name="oid" type="int" column="oid">
+	   		<generator class="increment"/>
+	  	</id>
+	  	
+	  	<property name="roleName" type="java.lang.String">
+			<column name="role_name" />
+	  	</property>
+	  	
+	  	<property name="roleDescription" type="java.lang.String">
+			<column name="role_description" />			
+	  	</property>
+	  	
+	  	<list name="rolePermission" cascade="all" table="hms_role_permissions">
+            <key column="oid" update="false" />
+            <index column="permission_name" />
+            <one-to-many class="com.hms.domain.RolePermission"/>
+        </list>
+	  	
+	</class>
+</hibernate-mapping>
+

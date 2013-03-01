@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hms.domain.RolePermission" table="hms_role_permissions">
+		<id name="oid" type="int" column="oid">
+	   		<generator class="increment"/>
+	  	</id>
+	  	
+	  	<property name="permissionName" type="java.lang.String">
+			<column name="permission_name" />			
+	  	</property>
+	  	
+		<many-to-one name="role" lazy="false" class="com.hms.domain.Role" column="role_oid"/>
+			  	
+	</class>
+</hibernate-mapping>
+

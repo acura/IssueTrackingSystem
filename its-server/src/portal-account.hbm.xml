@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.its.domain.Account" table="portal_account">
+		
+		<id name="oid" type="int" column="oid">
+	   		<generator class="increment"/>
+	  	</id>
+	  	
+	  	<property name="accountId" type="java.lang.String">
+			<column name="account_id" />			
+	  	</property>
+	  	
+	  	<property name="password" type="java.lang.String">
+			<column name="password" />			
+	  	</property>
+	  	
+	  	<property name="ownerName" type="java.lang.String">
+			<column name="owner_name" />			
+	  	</property>
+	  	
+	  	<property name="accountType" type="java.lang.String">
+	  		<column name="account_type" />
+	  	</property>
+	  	
+	  	<property name="title" type="java.lang.String">
+			<column name="title" />			
+	  	</property>
+	  	
+	  	<property name="address" type="java.lang.String">
+			<column name="address" />			
+	  	</property>
+	  	
+	  	<property name="phoneNumber" type="java.lang.String">
+			<column name="phone_number" />			
+	  	</property>
+	  	
+	  	<property name="mobileNumber" type="java.lang.String">
+			<column name="mobile_number" />			
+	  	</property>
+	  	
+	  	<property name="emailId" type="java.lang.String">
+			<column name="email_id" />			
+	  	</property>
+	  
+	  	<property name="alterNateEmailId" type="java.lang.String">
+			<column name="alternate_email_id" />			
+	  	</property>
+	  	
+	  	<property name="subcriptionStartDate" type="date">
+	  		<column name="subcription_start_date" />
+	  	</property>
+	  	
+	  	<property name="subscriptionEndDate" type="date">
+	  		<column name="subcription_end_date"/>
+	  	</property>
+	  	<property name="amountPaid" type="double">
+	  		<column name="amount_paid"/>
+	  	</property>
+	  	
+	  	<property name="createdBy" type="java.lang.String">
+			<column name="created_by" />			
+	  	</property>
+	  	
+	  	<property name="createdDate" type="timestamp">
+			<column name="created_date" />			
+	  	</property>
+	  	
+	  	<property name="lastUpdatedBy" type="java.lang.String">
+			<column name="last_updated_by" />			
+	  	</property>
+	  	
+ 		<property name="lastUpdatedDate" type="timestamp">
+			<column name="last_updated_date" />			
+	  	</property>
+	  	
+	</class>
+</hibernate-mapping>
+

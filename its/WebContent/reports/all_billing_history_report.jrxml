@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="all_billing_history_report" language="groovy" pageWidth="595" pageHeight="800" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Billing_History">
+		<parameter name="patientId" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{patientId}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="totalRemaining" class="java.lang.Double">
+			<defaultValueExpression><![CDATA[$P{totalRemaining}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select A.created_date as date, 'OPD',A.tot_remaining_bal, A.curr_bal_to_pay, A.tot_bal_to_pay, A.actbil_paid, A.amt_remaining
+from hms_opd_register A
+where A.user_id=$P{patientId}
+
+union all
+
+select B.created_date as date, 'Delivery',B.tot_remaining_bal, B.curr_bal_to_pay, B.tot_bal_to_pay, B.actbil_paid, B.amt_remaining
+from hms_delivery_register B
+where B.user_id=$P{patientId}
+
+union all
+
+select C.created_date as date, 'USG',C.tot_remaining_bal, C.curr_bal_to_pay, C.tot_bal_to_pay, C.actbil_paid, C.amt_remaining
+from hms_usg_register C
+where C.user_id=$P{patientId}
+
+union all
+
+select D.created_date as date, 'MTP',D.tot_remaining_bal, D.curr_bal_to_pay, D.tot_bal_to_pay, D.actbil_paid, D.amt_remaining
+from hms_mtp_register D
+where D.user_id=$P{patientId}
+
+union all
+
+select E.created_date as date, 'Lab Test',E.tot_remaining_bal, E.curr_bal_to_pay, E.tot_bal_to_pay, E.actbil_paid, E.amt_remaining
+from hms_lab_custom_test_result E
+where E.user_id=$P{patientId}
+
+union all
+
+select F.created_date as date, 'Elements Rec', F.tot_remaining_bal, F.curr_bal_to_pay, F.tot_bal_to_pay, F.actbil_paid, F.amt_remaining
+from hms_lab_elements_record F
+where F.user_id=$P{patientId}
+
+union all
+
+select G.date_as_of as date, 'Misc Billing', G.tot_remaining_to_pay, G.curr_bal_to_pay, G.tot_bal_to_pay, G.misc_charges_paid, G.amt_remaining
+from hms_misc_billing_charges G
+where G.user_id=$P{patientId}]]>
+		</queryString>
+		<field name="date" class="java.sql.Date"/>
+		<field name="OPD" class="java.lang.String"/>
+		<field name="tot_remaining_bal" class="java.lang.Double"/>
+		<field name="curr_bal_to_pay" class="java.lang.Double"/>
+		<field name="tot_bal_to_pay" class="java.lang.Double"/>
+		<field name="actbil_paid" class="java.lang.Double"/>
+		<field name="amt_remaining" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="hospitalName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{hospitalName}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="patientId" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{patientId}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="address" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{address}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="phoneNumber" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{phoneNumber}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalRemaining" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[$P{totalRemaining}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select concat(A.first_name,' ',A.middle_name,' ',A.last_name)'Patient Name',A.address,A.age,A.gender from hms_user A
+where A.user_id = $P{patientId};]]>
+	</queryString>
+	<field name="Patient Name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="age" class="java.lang.Integer"/>
+	<field name="gender" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="600" splitType="Stretch">
+			<line>
+				<reportElement x="-10" y="69" width="575" height="1"/>
+			</line>
+			<line>
+				<reportElement x="-10" y="88" width="575" height="1"/>
+			</line>
+			<line>
+				<reportElement x="-10" y="69" width="1" height="19"/>
+			</line>
+			<textField>
+				<reportElement x="306" y="5" width="244" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{hospitalName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="106" width="41" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="124" width="56" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Address :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="105" width="33" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="414" y="105" width="137" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="124" width="29" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Sex :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="124" width="27" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Age :]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" style="table" x="-10" y="164" width="56" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Billing_History">
+						<datasetParameter name="patientId">
+							<datasetParameterExpression><![CDATA[$P{patientId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="totalRemaining">
+							<datasetParameterExpression><![CDATA[$P{totalRemaining}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="66">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="17" y="9" width="29" height="15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="dd/MM/yyyy">
+								<reportElement x="0" y="0" width="66" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression class="java.util.Date"><![CDATA[$F{date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="77">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="13" y="8" width="49" height="15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Register]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="77" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{OPD}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="89">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="12" y="0" width="66" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Previous Balance]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="89" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_remaining_bal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="101">
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="5" y="0" width="92" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Current Charges To Pay]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="1" y="0" width="100" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{curr_bal_to_pay}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="73">
+						<jr:tableFooter height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="30"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Remaining]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="10" y="0" width="55" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total To Pay]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="73" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_bal_to_pay}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85">
+						<jr:tableFooter height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="4" y="8" width="58" height="16"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Balance :]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="7" y="0" width="71" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Actual Bill Paid]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="2" y="0" width="83" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{actbil_paid}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82">
+						<jr:tableFooter height="30" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="82" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$P{totalRemaining}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="table_TD" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="8" y="0" width="68" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Amount Remaining]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField pattern="#0.00" isBlankWhenNull="true">
+								<reportElement x="1" y="0" width="81" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.Double"><![CDATA[$F{amt_remaining}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<line>
+				<reportElement x="564" y="70" width="1" height="18"/>
+			</line>
+			<staticText>
+				<reportElement x="224" y="70" width="100" height="17"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Billing History]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="61" y="105" width="267" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Patient Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="61" y="124" width="267" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="123" width="52" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="124" width="56" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="45" width="198" height="13"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{phoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="22" width="244" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="45" width="37" height="13"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Tel. No.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[1==2]]></printWhenExpression>
+		</band>
+	</summary>
+</jasperReport>
