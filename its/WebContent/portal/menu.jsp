@@ -105,6 +105,25 @@
 							<span class="menu-right"></span>
 						</a>
 						</li>
+			   	
+			   	       <li class="">
+						<a href="${pageContext.request.contextPath}/its/editDeveloper.action?isFromMenu=true">
+							<span class="menu-left"></span>
+							<span class="menu-mid">Add New Developer</span>
+							<span class="menu-right"></span>
+						</a>
+						</li>
+			   	
+			   	       <li class="">
+						<a href="${pageContext.request.contextPath}/its/.action?isFromMenu=true">
+							<span class="menu-left"></span>
+							<span class="menu-mid">Add New Project</span>
+							<span class="menu-right"></span>
+						</a>
+						</li>
+			   	
+			   	
+			   	
 			   	</ul>
 		 	</div>
 		</div>

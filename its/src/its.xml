@@ -32,5 +32,25 @@
 			<result name="success" >/portal/onDemandBackup.jsp</result>
 		</action> 
 		
+		<action name="saveDeveloper" class="com.its.action.SaveDeveloperAction">
+             <result name="input">/portal/editDeveloper.jsp</result>
+        	<result name="success" type="redirectAction">viewDeveloper</result>
+        </action>
+        
+		
+		<action name="editDeveloper" class="com.its.action.RetrieveDeveloperAction">
+             <result name="input">/portal/editDeveloper.jsp</result>
+        	<result name="success" >/portal/editDeveloper.jsp</result>
+        </action>
+        
+		
+		<action name="viewDeveloper" class="com.its.action.ViewDeveloperAction">
+        	<result name="success" >/portal/viewDeveloper.jsp</result>
+        </action>
+        
+		<action name="deleteDeveloper" class="com.its.action.ViewDeveloperAction">
+  		<result name="success" >/portal/viewDeveloper.jsp</result>
+        </action>
+        
     </package>
 </struts>

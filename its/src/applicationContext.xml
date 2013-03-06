@@ -63,5 +63,7 @@
 	<bean id="accountService" class="com.its.service.AccountService"/>
 	<bean id="issueDAO" class="com.its.dao.IssueDAO" />
 	<bean id="issueService" class="com.its.service.IssueService"/>
-
+    <bean id="developerDAO" class="com.its.dao.DeveloperDAO" />
+	<bean id="developerService" class="com.its.service.DeveloperService"/>
+    
 </beans>
