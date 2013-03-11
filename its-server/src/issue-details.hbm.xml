@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.its.domain.NewIssue" table="issue_details">
+		
+		<id name="oid" type="int" column="oid">
+	   		<generator class="increment"/>
+	  	</id>
+	  	
+	  	<property name="issueNo" type="java.lang.String">
+			<column name="issue_no" />			
+	  	</property>
+	  	
+	  	<property name="summary" type="java.lang.String">
+			<column name="summary" />			
+	  	</property>
+	  	
+	  	<property name="detail" type="java.lang.String">
+			<column name="detail" />			
+	  	</property>
+	  	
+	  	<property name="system" type="java.lang.String">
+	  		<column name="system" />
+	  	</property>
+	  	
+	  	<property name="severity" type="java.lang.String">
+			<column name="severity" />			
+	  	</property>
+	  	
+	  	<property name="priority" type="java.lang.String">
+			<column name="priority" />			
+	  	</property>
+	  	
+	  	<property name="estimatedStartDate" type="date">
+			<column name="estimated_start_date" />			
+	  	</property>
+	  	
+	  	<property name="estimatedEndDate" type="date">
+			<column name="estimated_end_date" />			
+	  	</property>
+	  	
+	  	<property name="estimatedHours" type="double">
+			<column name="estimated_hours" />			
+	  	</property>
+	  	
+	  		<property name="actualStartDate" type="timestamp">
+			<column name="actual_start_date" />			
+	  	</property>
+	  	
+	  		<property name="actualEndDate" type="timestamp">
+			<column name="actual_end_date" />			
+	  	</property>
+	  	
+	  		<property name="loggedBy" type="java.lang.String">
+			<column name="logged_by" />			
+	  	</property>
+	  	
+	  		<property name="targetVersion" type="java.lang.String">
+			<column name=" target_version" />			
+	  	</property>
+	  	
+	  	  <property name="assignedTo" type="java.lang.String">
+			<column name="assinged_to" />			
+	  	</property>  
+	  		
+	  	
+	  	
+	</class>
+</hibernate-mapping>
+
+

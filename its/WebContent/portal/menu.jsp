@@ -52,6 +52,7 @@
 			   		
 			   		<li class="">
 						<a href="../portal/ViewItsHomePage.jsp">
+						<!-- <a href="${pageContext.request.contextPath}/login/Login.action">--> 
 							<span class="menu-left"></span>
 							<span class="menu-mid">Home</span>
 							<span class="menu-right"></span>
@@ -74,7 +75,7 @@
 									</li>
 								
 								</c:if> 
-								
+								    
 							</ul>
 			   				<div class="btm-bg"></div>
 			   			</div>
@@ -83,10 +84,18 @@
 					<li class="">
 						<a href="${pageContext.request.contextPath}/its/editIssue.action">
 							<span class="menu-left"></span>
-							<span class="menu-mid">Add New Issue</span>
+							<span class="menu-mid">Log Time</span>
 							<span class="menu-right"></span>
 						</a>
+						<div class="sub">
+			   				<ul>
+								<li>
+									<a href="${pageContext.request.contextPath}/its/viewIssues.action">View Log Time</a>
+								</li>
+	            	   				<div class="btm-bg"></div>
 	            	   	
+	            	   		</ul>
+	            	    </div>
 					</li>
 					
 					
@@ -96,7 +105,7 @@
 							<span class="menu-mid">View Issues</span>
 							<span class="menu-right"></span>
 						</a>
-						</li>
+					</li>
 						
 					    <li class="">
 						<a href="${pageContext.request.contextPath}/its/onDemandBackup.action?isFromMenu=true">
@@ -112,6 +121,16 @@
 							<span class="menu-mid">Add New Developer</span>
 							<span class="menu-right"></span>
 						</a>
+							<div class="sub">
+			   				<ul>
+									<li>
+										<a href="${pageContext.request.contextPath}/its/viewDeveloper.action">View Developers</a>
+									</li>
+								
+							</ul>
+			   				<div class="btm-bg"></div>
+			   				</div>
+			
 						</li>
 			   	
 			   	       <li class="">
@@ -121,10 +140,28 @@
 							<span class="menu-right"></span>
 						</a>
 						</li>
-			   	
-			   	
-			   	
-			   	</ul>
+			   	    
+			   	    	<li class="">
+						
+						 	<a href="${pageContext.request.contextPath}/its/editNewIssue.action?isFromMenu=true"> 
+								<span class="menu-left"></span>
+								<span class="menu-mid">Add New Issue</span>
+								<span class="menu-right"></span>
+							</a>
+							<div class="sub">
+			   				<ul>
+			   				
+			   					<li>
+			   						<a href="${pageContext.request.contextPath}/its/viewNewIssues.action">View New Issues</a>
+								</li>
+									   				    
+							</ul>
+			   					<div class="btm-bg"></div>
+			   				</div>
+			
+						</li>
+					
+			   		</ul>
 		 	</div>
 		</div>
 		<%-- div class="content-bottom"></div --%>

@@ -7,7 +7,7 @@
 
     <package name="its" namespace="/its" extends="struts-default">
 		
-        	
+               	
         <action name="saveIssue" class="com.its.action.SaveIssueAction">
         	<result name="input">/portal/editIssue.jsp</result>
         	<result name="success" type="redirectAction">viewIssues</result>
@@ -51,6 +51,25 @@
 		<action name="deleteDeveloper" class="com.its.action.ViewDeveloperAction">
   		<result name="success" >/portal/viewDeveloper.jsp</result>
         </action>
+        
+        <action name="editNewIssue" class="com.its.action.RetrieveNewIssueAction">
+        	<result name="input">/portal/editNewIssue.jsp</result>
+        	<result name="success" >/portal/editNewIssue.jsp</result>
+        </action>
+        
+         <action name="saveNewIssue" class="com.its.action.SaveNewIssueAction">
+        	<result name="input">/portal/editNewIssue.jsp</result>
+        	<result name="success" type="redirectAction">viewNewIssues</result>
+        </action>
+        
+        <action name="viewNewIssues" class="com.its.action.ViewNewIssueAction">
+        	<result name="success" >/portal/viewNewIssues.jsp</result>
+        </action>
+        
+		<action name="deleteNewIssue" class="com.its.action.ViewNewIssueAction">
+  		<result name="success" >/portal/viewNewIssues.jsp</result>
+        </action>
+        
         
     </package>
 </struts>
