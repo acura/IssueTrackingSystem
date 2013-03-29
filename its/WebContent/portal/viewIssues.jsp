@@ -11,9 +11,9 @@
 		<jsp:include page="include.jsp"></jsp:include>
 		<script type="text/javascript">	
 
-		function getIssues(oid)
+		function getIssues(issueNumber)
 		{
-			pleaseWait('window.location.href = \'editIssue?oid=' + oid +'&isInvoked=true\'');
+			pleaseWait('window.location.href = \'editIssue?issueNumber=' + issueNumber +'&isInvoked=true\'');
 			
 		}
 
@@ -199,13 +199,14 @@
             	<td style=" width: 100%; margin: 0%;" align="center">
              	     
              	     <div class="fixedDiv" id="outterDiv" align="center">
-               		<tr>
+               		<table>
                		<jsp:include page="searchCriteria.jsp"/>
-            		 </tr>
+            		 </table>
             		</div>
             		           		
             	</td>
             </tr>
+            
               
            
             <c:if test="${issueList != null && not empty issueList}">
@@ -224,7 +225,7 @@
                >
                <jmesa:htmlTable caption="" width="100%" style="background-color:white;">               
                    <jmesa:htmlRow> 
-                       <jmesa:htmlColumn property="issueNo" title="Issue No" width="10%"><div style="text-align:left; margin-left:20px;"> ${bean.issueNo} </div></jmesa:htmlColumn>
+                       <jmesa:htmlColumn property="issueNumber" title="Issue Number" width="10%"><div style="text-align:left; margin-left:20px;"> ${bean.newIssue.issueNumber} </div></jmesa:htmlColumn>
                        <jmesa:htmlColumn property="issueDate"
 							          	pattern="dd-MM-yyyy" 
 							           	cellEditor="org.jmesa.view.editor.DateCellEditor"
@@ -239,8 +240,8 @@
                           <jmesa:htmlColumn property="comment" title="Comment" width="30%"><div style="text-align:left; margin-left:20px;"> ${bean.comment} </div></jmesa:htmlColumn>
                          
                        <jmesa:htmlColumn sortable="false" property="" title="Action" filterable="false" width="20%">
-                       <a href="#" onclick="getIssues('${bean.oid}');">Edit</a>
-                         <a href="javascript:confirmDelete('deleteIssues?delete=true&oid=${bean.oid}')">Delete</a>
+                       <a href="#" onclick="getIssues('${bean.newIssue.issueNumber}');">Edit</a>
+                         <a href="javascript:confirmDelete('deleteIssues?delete=true&issueNumber=${bean.newIssue.issueNumber}')">Delete</a>
                        </jmesa:htmlColumn>
                    </jmesa:htmlRow>
                </jmesa:htmlTable> 

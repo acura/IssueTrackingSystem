@@ -110,14 +110,14 @@
 <table class="mainTable" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
 	<tr>
         <td  class="screenHeader" align="center">
-              <span class="screenHeaderSpan">Add New Issue</span>
+              <span class="screenHeaderSpan">Log Time</span>
 		</td>
 	</tr>
    <tr>
     	<td style="width: 100%;">
     		<div class="scrollableDiv" id="outterDiv" align="center">
 				<table style="width: 100%;">
-				<s:hidden key="oid" value="%{oid}"/>
+				
            			<tr>
 						<td style="width: 100%;" valign="top">
 	            			<table style="width: 100%;">
@@ -127,7 +127,7 @@
 		                         	<td style="width: 50%;">
 		                         		<table>
 		                         		    
-		                         			<s:select list="#{'':'','Amol Gadre':'Amol Gadre', 'Mahesh Kalshetty':'Mahesh Kalshetty', 'Mahesh Shivarkar':'Mahesh Shivarkar', 'Ashok Kale':'Ashok Kale','Swati Malode':'Swati Malode','Dolly Bisen':'Dolly Bisen','Mayur kamte':'Mayur kamte','Nutan Chougale':'Nutan Chougale','Supriya Jadhav':'Supriya Jadhav','Pooja Palekar':'Pooja Palekar'}"
+		                         			<s:select list="developerList" listKey="optionId" listValue="optionText"
 			                        		key="developer" label="" labelSeparator="" ></s:select>	
 		                         		</table>
 		                         	</td>
@@ -138,31 +138,25 @@
 		                        <td style="width: 50%;">
 		                         		<table>
 		                         			
-		                         			<c:choose>
+		                         			<!--<c:choose>
 		                         			<c:when test="${not empty oid}">
 		                         				${selectedProjectNameList}
 			                        		</c:when>
-			                        		<c:otherwise>
-			                        			<s:select list="#{'':'', 'GynoSoft':'GynoSoft', 'Prolab':'Prolab', 'GenSoft':'GenSoft','prescription':'Prescription','VBS':'VBS','UAS':'UAS','ITS':'ITS'}"
-			                        			key="project" label="" labelSeparator="" multiple="true" ></s:select>
-			                        		</c:otherwise>
-			                        		</c:choose>
-			                        		
-			                        		 
-							            
-							            
-							            
-							                	
+			                        		<c:otherwise>-->
+			                        		<s:select list="projectList" listKey="optionId" listValue="optionText"
+			                        		key="project" label="" labelSeparator="" ></s:select>
+			                        		<!--</c:otherwise>
+			                        		</c:choose>-->
 		                         		</table>
 		                         	</td>
 		                        
 		                        </tr>
 		                        
 		                         <tr>
-		                         	<td style="width: 49%;font-weight:bold;text-align:right;"><i> Issue No<font color="red">*</font>:</i></td>
+		                         	<td style="width: 49%;font-weight:bold;text-align:right;"><i> Issue Number<font color="red">*</font>:</i></td>
 		                         	<td style="width: 51%;">
 		                         		<table>
-											<s:textfield key="issueNo" label="" labelSeparator="" maxlength="14" size="20"  onkeyup=""/>		                         		
+											<s:textfield key="issueNumber" label="" labelSeparator="" maxlength="14" size="20"  onkeyup=""/>		                         		
 		                         		</table>
 		                         	</td>
 		                        </tr>

@@ -15,11 +15,11 @@ public class ViewNewIssueAction extends NewIssueAction
 		 if (getServletRequest().getParameter("delete") != null && 
 			getServletRequest().getParameter("delete").equals("true"))
 		{
-			String strOid = getServletRequest().getParameter("oid");
-			if (strOid != null && !strOid.isEmpty())
+			String strIssueNumber = getServletRequest().getParameter("issueNumber");
+			if (strIssueNumber != null && !strIssueNumber.isEmpty())
 			{
-				Integer oid = Integer.parseInt(strOid);
-				getNewIssueService().deleteNewIssue(oid);
+				Integer issueNumber = Integer.parseInt(strIssueNumber);
+				getNewIssueService().deleteNewIssue(issueNumber);
 			}
 		}
 		 Collection<NewIssue> newIssueList = getNewIssueService().getAllNewIssue();

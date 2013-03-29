@@ -51,8 +51,8 @@
 				<ul id="navigation">
 			   		
 			   		<li class="">
-						<a href="../portal/ViewItsHomePage.jsp">
-						<!-- <a href="${pageContext.request.contextPath}/login/Login.action">--> 
+						<!--<a href="../portal/ViewItsHomePage.jsp">-->
+						 <a href="${pageContext.request.contextPath}/login/login.action"> 
 							<span class="menu-left"></span>
 							<span class="menu-mid">Home</span>
 							<span class="menu-right"></span>
@@ -99,13 +99,13 @@
 					</li>
 					
 					
-					<li class="">
+					<!--  <li class="">
 					<a href="${pageContext.request.contextPath}/its/viewIssues.action?isFromMenu=true">
 							<span class="menu-left"></span>
 							<span class="menu-mid">View Issues</span>
 							<span class="menu-right"></span>
 						</a>
-					</li>
+					</li>-->
 						
 					    <li class="">
 						<a href="${pageContext.request.contextPath}/its/onDemandBackup.action?isFromMenu=true">
@@ -116,16 +116,20 @@
 						</li>
 			   	
 			   	       <li class="">
-						<a href="${pageContext.request.contextPath}/its/editDeveloper.action?isFromMenu=true">
+						<a href="${pageContext.request.contextPath}">
 							<span class="menu-left"></span>
-							<span class="menu-mid">Add New Developer</span>
+							<span class="menu-mid">Developer</span>
 							<span class="menu-right"></span>
 						</a>
 							<div class="sub">
 			   				<ul>
 									<li>
+										<a href="${pageContext.request.contextPath}/its/editDeveloper.action">Add New Developers</a>
+									</li>
+									<li>
 										<a href="${pageContext.request.contextPath}/its/viewDeveloper.action">View Developers</a>
 									</li>
+									
 								
 							</ul>
 			   				<div class="btm-bg"></div>
@@ -134,23 +138,41 @@
 						</li>
 			   	
 			   	       <li class="">
-						<a href="${pageContext.request.contextPath}/its/.action?isFromMenu=true">
+						<a href="${pageContext.request.contextPath}">
 							<span class="menu-left"></span>
-							<span class="menu-mid">Add New Project</span>
+							<span class="menu-mid">Project</span>
 							<span class="menu-right"></span>
 						</a>
+							<div class="sub">
+			   				<ul>
+			   						<li>
+			   							<a href="${pageContext.request.contextPath}/its/editProject.action">Add New Projects</a>
+									</li> 
+									<li>
+										<a href="${pageContext.request.contextPath}/its/viewProject.action">View Projects</a>
+									</li>
+
+									
+								
+							</ul>
+			   				<div class="btm-bg"></div>
+			   				</div>
+			
 						</li>
 			   	    
 			   	    	<li class="">
 						
-						 	<a href="${pageContext.request.contextPath}/its/editNewIssue.action?isFromMenu=true"> 
+						 	<a href="${pageContext.request.contextPath}"> 
 								<span class="menu-left"></span>
-								<span class="menu-mid">Add New Issue</span>
+								<span class="menu-mid">Issues</span>
 								<span class="menu-right"></span>
 							</a>
 							<div class="sub">
 			   				<ul>
-			   				
+			   					<li>
+			   						<a href="${pageContext.request.contextPath}/its/editNewIssue.action">Add New Issues</a>
+			   					</li>
+			   							
 			   					<li>
 			   						<a href="${pageContext.request.contextPath}/its/viewNewIssues.action">View New Issues</a>
 								</li>
@@ -158,7 +180,18 @@
 							</ul>
 			   					<div class="btm-bg"></div>
 			   				</div>
-			
+						</li>
+						
+						
+						
+						
+						<li class="">
+						
+						 	<a href="${pageContext.request.contextPath}/its/editUpdate.action?isFromMenu=true"> 
+								<span class="menu-left"></span>
+								<span class="menu-mid">update</span>
+								<span class="menu-right"></span>
+							</a>
 						</li>
 					
 			   		</ul>

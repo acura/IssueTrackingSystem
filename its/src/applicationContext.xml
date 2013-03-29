@@ -67,6 +67,10 @@
 	<bean id="developerService" class="com.its.service.DeveloperService"/>
 	<bean id="newIssueDAO" class="com.its.dao.NewIssueDAO" />
 	<bean id="newIssueService" class="com.its.service.NewIssueService"/>
+    <bean id="ProjectDAO" class="com.its.dao.ProjectDAO" />
+	<bean id="projectService" class="com.its.service.ProjectService"/>
+	<bean id="NoteDAO" class="com.its.dao.NoteDAO" />
+	<bean id="noteService" class="com.its.service.NoteService"/>
     
     
 </beans>

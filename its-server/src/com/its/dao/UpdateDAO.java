@@ -1,9 +1,9 @@
 package com.its.dao;
  
-import com.its.domain.NewIssue;
-import com.its.exception.DAOException;
-
+import java.util.Calendar;
 import java.util.Collection;
+
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -12,8 +12,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.its.domain.Developer;
+import com.its.domain.Issue;
+import com.its.domain.NewIssue;
+import com.its.exception.DAOException;
+import com.its.util.DateUtils;
+import com.its.util.GenericUtils;
 @Transactional(propagation=Propagation.MANDATORY)
-public class NewIssueDAO 
+public class UpdateDAO 
 {
 	//message//
 	@Autowired
@@ -26,33 +33,21 @@ public class NewIssueDAO
 		try
 		{
 			Session session = sessionFactory.getCurrentSession();
-			if (newIssue.getIssueNumber() != null)
+			if (newIssue.getIssueNumber() !=null)
 			{
 				NewIssue newIssueDB = (NewIssue)session.get(NewIssue.class, newIssue.getIssueNumber());
+				
 				if (newIssueDB != null)
 				{
 					//Account accountDB = (Account)session.get(Account.class, account.getOid());
 					
-					//issueDB.setOid(issue.getOid());
-					newIssueDB.setIssueNumber(newIssue.getIssueNumber());
-					
-					newIssueDB.setSummary(newIssue.getSummary());
-					newIssueDB.setDetail(newIssue.getDetail());
-					newIssueDB.setSystem(newIssue.getSystem());
-					newIssueDB.setDetail(newIssue.getSeverity());
 					newIssueDB.setSystem(newIssue.getPriority());
-					newIssueDB.setEstimatedStartDate(newIssue.getEstimatedStartDate());
-					newIssueDB.setEstimatedEndDate(newIssue.getEstimatedEndDate());
 					newIssueDB.setEstimatedHours(newIssue.getEstimatedHours());
-					System.out.println("newIssue.getEstimatedHours()"+newIssue.getEstimatedHours());
-					System.out.println("newIssueDB"+newIssueDB);
 					newIssueDB.setActualStartDate(newIssue.getActualStartDate());
 					newIssueDB.setActualEndDate(newIssue.getActualEndDate());
-					newIssueDB.setLoggedBy(newIssue.getLoggedBy());
-					newIssueDB.setStatus(newIssue.getStatus());
 					newIssueDB.setTargetVersion(newIssue.getTargetVersion());
 					newIssueDB.setAssignedTo(newIssue.getAssignedTo());
-					newIssueDB.setIssue(newIssue.getIssue());
+					
 					session.update(newIssueDB);
 				}
 				else
@@ -70,21 +65,42 @@ public class NewIssueDAO
 		}
 	}
 	
-
-	/*public NewIssue getNewIssueByOid(int oid)
-		throws DAOException
+	public Integer saveIssues(Issue issue)
+	throws DAOException
+	{
+		Integer txnOid = null;
+		try
 		{
-			try
+			Session session = sessionFactory.getCurrentSession();
+			
+			if (issue.getOid()!=null)
 			{
-				NewIssue newIssueDomain = (NewIssue)sessionFactory.getCurrentSession().get(NewIssue.class, oid);
-				return newIssueDomain;
+				//Account accountDB = (Account)session.get(Account.class, account.getOid());
+				Issue issueDB = (Issue)session.get(Issue.class, issue.getOid());
+				//issueDB.setOid(issue.getOid());
+				System.out.println("oid"+issue.getOid());
+				issueDB.setHours(issue.getHours());
+				System.out.println("issue.getHour()"+issue.getHours());
+				issueDB.setActivity(issue.getActivity());
+				System.out.println("issue.getActivity()"+issue.getActivity());
+				issueDB.setComment(issue.getComment());
+				System.out.println("issue.getComment()"+issue.getComment());
+				System.out.println("issueDB"+issueDB);
+				session.update(issueDB);
 			}
-			catch (Exception e)
+			else
 			{
-				throw new DAOException("Exception in NewIssueDAO.getNewIssueByOid(): "
-										+e.getMessage(),e);
+				txnOid = (Integer)session.save(issue);
 			}
-		}*/
+			session.flush();
+			return txnOid;
+		}
+		catch (Exception e) 
+		{
+			throw new DAOException();
+		}
+	}
+
 
 	public Collection<NewIssue> getAllNewIssue()
 	throws DAOException
@@ -94,7 +110,7 @@ public class NewIssueDAO
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
 					session.createQuery("from NewIssue newIssue " +
-										"order by newIssue.issueNumber");
+										"order by newIssue.oid");
 			List<NewIssue> list = fromClauseQuery.list();
 			return list != null && !list.isEmpty() ? list : null;
 		} 
@@ -104,7 +120,26 @@ public class NewIssueDAO
 		}
 	}
 	
-	public NewIssue getNewIssueByOid(Integer issueNumber)
+	public Collection<Issue> getAllIssue()
+	throws DAOException
+	{
+		try 
+		{
+			Session session = sessionFactory.getCurrentSession();
+			Query fromClauseQuery = 
+					session.createQuery("from Issue issue " +
+										"order by issue.oid");
+			List<Issue> list = fromClauseQuery.list();
+			return list != null && !list.isEmpty() ? list : null;
+		} 
+		catch (Exception e) 
+		{
+			throw new DAOException();
+		}
+	}
+	
+	
+	public NewIssue getNewIssueByOid(Integer oid)
 	throws DAOException
 	{
 		try 
@@ -112,7 +147,7 @@ public class NewIssueDAO
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
 					session.createQuery("from NewIssue newIssue " +
-										"where newIssue.issueNumber = " +issueNumber );
+										"where newIssue.oid = " +oid );
 			List<NewIssue> list = fromClauseQuery.list();
 			return list != null && !list.isEmpty() ? list.get(0): null;
 		} 
@@ -122,31 +157,15 @@ public class NewIssueDAO
 		}
 	}
 	
-	public NewIssue getNewIssueByissueNumber(Integer issueNumber)
-	throws DAOException
-	{
-		NewIssue newIssueObject = null;
-		try 
-		{
-			Session session = sessionFactory.getCurrentSession();
-			
-			newIssueObject = (NewIssue)session.get(NewIssue.class, issueNumber);
-			return newIssueObject;
-		} 
-		catch (Exception e) 
-		{
-			throw new DAOException();
-		}
-	}
 	
 	
-	public boolean deleteNewIssues(Integer issueNumber)
+	public boolean deleteNewIssues(Integer oid)
 	throws DAOException
 	{
 	  try
 	  {
 			Session session=sessionFactory.getCurrentSession();
-			Query query=session.createQuery("delete from NewIssue newIssue where newIssue.issueNumber="+issueNumber);
+			Query query=session.createQuery("delete from NewIssue newIssue where newIssue.oid="+oid);
 			query.executeUpdate();
 			session.flush();
 			return true;
@@ -165,7 +184,7 @@ public class NewIssueDAO
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
 					session.createQuery("from NewIssue newIssue " +
-										"order by newIssue.issueNumber");
+										"order by newIssue.oid");
 			List<NewIssue> list = fromClauseQuery.list();
 			return list != null && !list.isEmpty() ? list : null;
 		} 
@@ -174,25 +193,7 @@ public class NewIssueDAO
 			throw new DAOException();
 		}
 	}
-	
-	public Collection<NewIssue> getAllDeveloperList()
-	throws DAOException
-	{
-		try 
-		{
-			Session session = sessionFactory.getCurrentSession();
-			Query fromClauseQuery = 
-					session.createQuery("from NewIssue newIssue " +
-										"order by newIssue.issueNumber");
-			List<NewIssue> list = fromClauseQuery.list();
-			return list != null && !list.isEmpty() ? list : null;
-		} 
-		catch (Exception e) 
-		{
-			throw new DAOException();
-		}
-	}
-	
+		
 
 
 }

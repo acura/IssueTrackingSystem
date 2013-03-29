@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.its.domain.Issue" table="its_master">
+	<class name="com.its.domain.Issue" table="its_log_time">
 		
 		<id name="oid" type="int" column="oid">
 	   		<generator class="increment"/>
@@ -11,10 +11,6 @@
 	  	
 	  	<property name="developer" type="java.lang.String">
 			<column name="developer_name" />			
-	  	</property>
-	  	
-	  	<property name="issueNo" type="java.lang.String">
-			<column name="issue_no" />			
 	  	</property>
 	  	
 	  	<property name="project" type="java.lang.String">
@@ -41,13 +37,11 @@
 			<column name="created_date" />			
 	  	</property>
 	  	
-	  	
 	  	<property name="lastUpdatedDate" type="timestamp">
 			<column name="last_updated_date" />			
 	  	</property>
 	  	
-	  	
-	  	
+	  	 <many-to-one name="newIssue" lazy="false" class="com.its.domain.NewIssue" column="issue_no"/>
 	  	
 	</class>
 </hibernate-mapping>

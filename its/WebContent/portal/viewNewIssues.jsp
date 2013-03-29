@@ -5,18 +5,24 @@
 <html>
     
     <head>
-    	<title>Account Search Entries</title>
+    	<title> All Issue Details</title>
     	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=7" />
 		<jsp:include page="include.jsp"></jsp:include>
 		<script type="text/javascript">	
 		
-			function getDeveloper(oid)
+			function getNewIssue(issueNumber)
 			{
-				pleaseWait('window.location.href = \'editNewIssue?oid=' + oid + '&isInvokedFromViewNewIssue=true\'');
+				pleaseWait('window.location.href = \'editNewIssue?issueNumber=' + issueNumber + '&isInvokedFromViewNewIssue=true\'');
 				
 			}
 
+			function getIssueDescription(issueNumber)
+			{
+				pleaseWait('window.location.href = \'viewIssueDescription?issueNumber=' + issueNumber + '&isInvokedFromViewNewIssue=true\'');
+				
+			}
+			
 
 			function confirmDelete(delUrl)
 			{
@@ -71,31 +77,28 @@
                >
                <jmesa:htmlTable caption="" width="100%;" style="background-color:white;">               
                    <jmesa:htmlRow> 
-                       <jmesa:htmlColumn property="oid" title=" Oid" width="2%" >
-                              <div align="center" style="text-align: center;">
-                                  ${bean.oid}
-                              </div>
-                       </jmesa:htmlColumn>
-
-                       <jmesa:htmlColumn property="issueNo" title="Issue No" width="2%"/>
-                       <jmesa:htmlColumn property="summary" title="Summary" width="15%"/>
+                       <jmesa:htmlColumn property="issueNumber" title="Issue Number" width="2%">
+                        <a href="#" onclick="getIssueDescription('${bean.issueNumber}');">${bean.issueNumber}</a>
+                        </jmesa:htmlColumn>
+                       <jmesa:htmlColumn property="summary" title="Summary" width="17%"/>
                        <jmesa:htmlColumn property="detail" title="Detail" width="27%"/>
                        <jmesa:htmlColumn property="system" title="System" width="5%"/>
                        <jmesa:htmlColumn property="severity" title="Severity" width="5%"/>
                        <jmesa:htmlColumn property="priority" title="Priority" width="5%"/>
                        <jmesa:htmlColumn property="estimatedStartDate" title="Estimated Start Date" width="5%"/>
                        <jmesa:htmlColumn property="estimatedEndDate" title="Estimated End Date" width="5%"/>
-                       <jmesa:htmlColumn property="estimatedHours" title="Estimated Hours" width="2%"/>
+                       <jmesa:htmlColumn property="estimatedHours" title="Estimated Hours" width="1%"/>
                        <jmesa:htmlColumn property="actualStartDate" title="Actual Start Date" width="5%"/>
                        <jmesa:htmlColumn property="actualEndDate" title="Actual End Date" width="5%"/>
                        <jmesa:htmlColumn property="loggedBy" title="Logged By" width="5%"/>
+                       <jmesa:htmlColumn property="status" title="Status" width="5%"/>
                        <jmesa:htmlColumn property="targetVersion" title="Target Version" width="5%"/>
                        <jmesa:htmlColumn property="assignedTo" title="Assinged To" width="5%"/>
                 
                        <jmesa:htmlColumn sortable="false" property="" title="Action" filterable="false" width="2%" >
                        
-                       <a href="#" onclick="getNewIssue('${bean.oid}');">Edit</a>
-                       <a href="javascript:confirmDelete('deleteNewIssue?delete=true&oid=${bean.oid}')">Delete</a>
+                       <a href="#" onclick="getNewIssue('${bean.issueNumber}');">Edit</a>
+                       <a href="javascript:confirmDelete('deleteNewIssue?delete=true&issueNumber=${bean.issueNumber}')">Delete</a>
                         
                        </jmesa:htmlColumn>
                    </jmesa:htmlRow>

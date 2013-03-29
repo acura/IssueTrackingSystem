@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import com.its.domain.Account;
 import com.its.domain.Developer;
+import com.its.domain.Project;
 import com.its.exception.DAOException;
 import com.its.util.DateUtils;
 import com.its.util.GenericUtils;
@@ -74,8 +76,29 @@ public class DeveloperDAO
 			throw new DAOException();
 		}
 	}
-	
 
+	public List<Developer> getAllDeveloperList()
+	throws DAOException
+	{
+		Session session = null;
+		try 
+		{
+			session = sessionFactory.getCurrentSession();
+			Query fromClauseQuery = session.createQuery("from Developer developer order by developer.developerName");
+			fromClauseQuery.setCacheable(false);
+			List<Developer> list = fromClauseQuery.list();
+			
+			return list != null && !list.isEmpty() ? list : null;
+		} 
+		
+		catch (Exception e) 
+		{
+			throw new DAOException("Exception in DeveloperDAO :"+ e.getMessage(), e);
+		}
+	}
+
+	
+	
 	public Collection<Developer> getAllDeveloper()
 	throws DAOException
 	{
@@ -93,6 +116,28 @@ public class DeveloperDAO
 			throw new DAOException();
 		}
 	}
+	
+	public Developer checkValidUser(String oid, String password)
+	throws DAOException
+	{
+		try 
+		{
+			Session session = sessionFactory.getCurrentSession();
+			
+			Query fromClauseQuery = 
+					session.createQuery("from Developer developer " +
+										"where developer.oid = '" + oid +"' " +
+										"and developer.password = '"+ password +"' ");
+			
+			List<Developer> list = fromClauseQuery.list();
+			return list != null && !list.isEmpty() ? list.get(0) : null;
+		} 
+		catch (Exception e) 
+		{
+			throw new DAOException();
+		}
+	}
+	
 	
 	public boolean deleteDeveloper(Integer oid)
 	throws DAOException

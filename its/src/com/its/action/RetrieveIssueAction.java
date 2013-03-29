@@ -1,23 +1,33 @@
 package com.its.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.its.domain.Issue;
+import com.its.domain.PortalConstant;
 import com.its.util.DateUtils;
 import com.its.util.GenericUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 //
 //modified
 public class RetrieveIssueAction extends IssueAction
 {
 public String execute() throws Exception
   {
-	String oid = getServletRequest().getParameter("oid");
-	if(GenericUtils.isNotNullOrEmpty(oid))
+	String issueNumber = getServletRequest().getParameter("issueNumber");
+	
+	PortalConstant.setAllProjectList();
+	setProjectList(PortalConstant.getProjectList());
+	
+	PortalConstant.setAllDeveloperList();
+	setDeveloperList(PortalConstant.getDeveloperList());
+	
+	
+	if(GenericUtils.isNotNullOrEmpty(issueNumber))
 	{
-		Issue issueObj = getIssueService().getIssueByOid(Integer.parseInt(oid));	
+		Issue issueObj = getIssueService().getIssueByOid(Integer.parseInt(issueNumber));	
 		this.setOid(issueObj.getOid());
-		this.setDeveloper(issueObj.getDeveloper());
+		this.setIssueNumber(issueObj.getNewIssue().getIssueNumber());
+		//this.setDeveloper(issueObj.getDeveloper());
 		
 		if (issueObj.getProject() != null &&
 				!issueObj.getProject().isEmpty())
@@ -114,8 +124,8 @@ public String execute() throws Exception
 			getServletRequest().setAttribute("selectedProjectNameList", selectedProjectNameSelectTag);
 		}
 		
-		this.setProject(issueObj.getProject());
-		this.setIssueNo(issueObj.getIssueNo());
+		//this.setProject(issueObj.getProject());
+		
 		this.setIssueDate(DateUtils.getDateAsDDMMYYYYFromMysqlDate(issueObj.getIssueDate()));
 		this.setHours(issueObj.getHours());
 		this.setComment(issueObj.getComment());

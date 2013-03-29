@@ -7,9 +7,14 @@ package com.its.dao;
 //updated 28feb
 
  
+import com.its.domain.Issue;
+import com.its.domain.IssueDO;
+import com.its.domain.NewIssue;
+import com.its.exception.DAOException;
+import com.its.util.DateUtils;
+
 import java.util.Calendar;
 import java.util.Collection;
-
 import java.util.Date;
 import java.util.List;
 
@@ -19,13 +24,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.its.domain.Account;
-import com.its.domain.Issue;
-import com.its.domain.IssueDO;
-import com.its.exception.DAOException;
-import com.its.util.DateUtils;
-import com.its.util.GenericUtils;
 @Transactional(propagation=Propagation.MANDATORY)
 public class IssueDAO 
 {
@@ -45,25 +43,18 @@ public class IssueDAO
 			{
 				//Account accountDB = (Account)session.get(Account.class, account.getOid());
 				Issue issueDB = (Issue)session.get(Issue.class, issue.getOid());
-				//issueDB.setOid(issue.getOid());
-				System.out.println("oid"+issue.getOid());
+				
 				issueDB.setDeveloper(issue.getDeveloper());
-				System.out.println("issue.getDeveloper()"+issue.getDeveloper());
 				issueDB.setProject(issue.getProject());
-				System.out.println("issue.getProject()"+issue.getProject());
-				issueDB.setIssueNo(issue.getIssueNo()!=null?issue.getIssueNo():"");
-				System.out.println("issue.getIssueNo()"+issue.getIssueNo());
+				issueDB.setIssueNumber(issue.getIssueNumber());
 				issueDB.setIssueDate(issue.getIssueDate());
-				System.out.println("issue.getDate()"+issue.getIssueDate());
 				issueDB.setHours(issue.getHours());
-				System.out.println("issue.getHour()"+issue.getHours());
 				issueDB.setActivity(issue.getActivity());
-				System.out.println("issue.getActivity()"+issue.getActivity());
 				issueDB.setComment(issue.getComment());
-				System.out.println("issue.getComment()"+issue.getComment());
-				System.out.println("issueDB"+issueDB);
 				issueDB.setLastUpdatedDate(issue.getLastUpdatedDate());
 				issueDB.setCreatedDate(issue.getCreatedDate());
+				issueDB.setNewIssue(issue.getNewIssue());
+				
 				session.update(issueDB);
 			}
 			else
@@ -86,8 +77,10 @@ public class IssueDAO
 		{
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
-					session.createQuery("from Issue issue  where(date(issue.createdDate)=  ' " +DateUtils.getDateAsYYYYMMDD(new Date())+"'"+
-							"and date(issue.lastUpdatedDate)= "   + null  + " ) or( date(issue.lastUpdatedDate)= ' " + DateUtils.getDateAsYYYYMMDD(new Date())+ " ')"+
+					session.createQuery("from Issue issue  " +
+										"where (date(issue.createdDate)=  ' " +DateUtils.getDateAsYYYYMMDD(new Date())+"' "+
+										"		and date(issue.lastUpdatedDate)= "   + null  + " ) " +
+										"	or( date(issue.lastUpdatedDate)= ' " + DateUtils.getDateAsYYYYMMDD(new Date())+ " ' )"+
 							"order by IFNULL(issue.lastUpdatedDate,issue.createdDate) desc");
 					
 			List<Issue> list = fromClauseQuery.list();
@@ -98,7 +91,7 @@ public class IssueDAO
 			throw new DAOException();
 		}
 		}
-	public Issue getIssueByOid(Integer oid)
+	public Issue getIssueByOid(Integer issueNumber)
 	throws DAOException
 	{
 		try 
@@ -106,7 +99,7 @@ public class IssueDAO
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
 					session.createQuery("from Issue issue " +
-										"where issue.oid = " + oid );
+										"where issue.newIssue.issueNumber = " + issueNumber );
 			List<Issue> list = fromClauseQuery.list();
 			return list != null && !list.isEmpty() ? list.get(0): null;
 		} 
@@ -116,6 +109,23 @@ public class IssueDAO
 		}
 	}
 	
+	 public List<Issue> getAllLogTimeByIssueNumber(Integer issueNumber)
+	 throws DAOException
+	 {
+		 try 
+			{
+				Session session = sessionFactory.getCurrentSession();
+				Query fromClauseQuery = 
+						session.createQuery("from Issue issue " +
+											"where issue.newIssue.issueNumber = " + issueNumber );
+				List<Issue> list = fromClauseQuery.list();
+				return list != null && !list.isEmpty() ? list: null;
+			} 
+			catch (Exception e) 
+			{
+				throw new DAOException();
+			}
+	 }
 	
 	
 	public boolean deleteIssuesBy(Integer oid)
@@ -149,7 +159,8 @@ public class IssueDAO
 								strSQL +=" and issue.developer like  '"+ issueDO.getDeveloper() +"%' ";
 							}
 							
-							if(issueDO.getIssueNo() != null && !issueDO.getIssueNo().isEmpty())
+							//if(issueDO.getIssueNo() != null && !issueDO.getIssueNo().isEmpty())
+							if(issueDO.getIssueNumber() != null)
 							{
 								/*System.out.println("inside issue DAO");
 								Issue issueobj=new Issue();	
@@ -157,7 +168,7 @@ public class IssueDAO
 								String issue[]=issueno.split("-");
 								System.out.println("issue[0]"+issue[0]);
 								System.out.println("issue[1]"+issue[1]);*/
-								strSQL +=" and issue.issueNo like '"+ issueDO.getIssueNo() +"'";
+								strSQL +=" and issue.issueNumber like "+ issueDO.getIssueNumber() +"";
 							}
 							
 							if(issueDO.getDateSign() != null && !issueDO.getDateSign().isEmpty())
@@ -223,6 +234,41 @@ public class IssueDAO
 		}
 	}
 	
-
+	public Collection<Issue> getAllProjectList()
+	throws DAOException
+	{
+		try 
+		{
+			Session session = sessionFactory.getCurrentSession();
+			Query fromClauseQuery = 
+					session.createQuery("from Issue issue " +
+										"order by issue.oid");
+			List<Issue> list = fromClauseQuery.list();
+			return list != null && !list.isEmpty() ? list : null;
+		} 
+		catch (Exception e) 
+		{
+			throw new DAOException();
+		}
+	}
+	
+	public Collection<Issue> getAllDeveloperList()
+	throws DAOException
+	{
+		try 
+		{
+			Session session = sessionFactory.getCurrentSession();
+			Query fromClauseQuery = 
+					session.createQuery("from Issue issue " +
+										"order by issue.oid");
+			List<Issue> list = fromClauseQuery.list();
+			return list != null && !list.isEmpty() ? list : null;
+		} 
+		catch (Exception e) 
+		{
+			throw new DAOException();
+		}
+	}
+	
 
 }

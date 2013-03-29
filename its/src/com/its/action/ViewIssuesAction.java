@@ -22,7 +22,7 @@ public class ViewIssuesAction extends IssueAction
 	//Comment Added
 	private String dateSign;
 	private String developer;
-	private String issueNo;
+	private Integer issueNumber;
 	private String searchFromDate;
 	private String searchToDate;
 	
@@ -139,7 +139,8 @@ public class ViewIssuesAction extends IssueAction
 				issueDO.getDateSign() != null &&
 				issueDO.getDateSign().isEmpty() && 
 				issueDO.getDeveloper().isEmpty()&&  
-				issueDO.getIssueNo().isEmpty() &&  
+				//issueDO.getIssueNo().isEmpty() &&  
+				issueDO.getIssueNumber() !=null &&
 				issueDO.getSearchToDate()!= null && 
 				issueDO.getSearchToDate().isEmpty() && 
 				issueDO.getSearchFromDate().isEmpty() &&
@@ -155,7 +156,7 @@ public class ViewIssuesAction extends IssueAction
 	
 	
 		setDeveloper(issueDO.getDeveloper());
-		setIssueNo(issueDO.getIssueNo());
+		setIssueNumber(issueDO.getIssueNumber());
 		setDateSign(issueDO.getDateSign());
 		setSearchFromDate(issueDO.getSearchFromDate());
 		setSearchToDate(issueDO.getSearchToDate());
@@ -179,9 +180,9 @@ public class ViewIssuesAction extends IssueAction
 			Row row = new Row(); 
 			table.setRow(row); 
 			
-			Column issueNo = new Column("issueNo"); 
-			issueNo.setTitle("IssueNo");
-			row.addColumn(issueNo);
+			Column issueNumber = new Column("issueNumber"); 
+			issueNumber.setTitle("IssueNumber");
+			row.addColumn(issueNumber);
 			
 			Column issueDate = new Column("issueDate"); 
 			issueDate.setTitle("IssueDate");
@@ -218,8 +219,8 @@ public class ViewIssuesAction extends IssueAction
 		{
 			 if (getDeveloper() != null &&
 				 getDeveloper().isEmpty() &&
-			     getIssueNo() != null &&
-			     getIssueNo().isEmpty() &&
+			     getIssueNumber() != null &&
+			    // getIssueNo().isEmpty() &&
 				 getDateSign() != null &&
 				 getDateSign().isEmpty())
 			 {
@@ -235,7 +236,7 @@ public class ViewIssuesAction extends IssueAction
 		IssueDO issueDO = new IssueDO();
 		
 		issueDO.setDeveloper(getDeveloper());
-		issueDO.setIssueNo(getIssueNo());
+		issueDO.setIssueNumber(getIssueNumber());
 		issueDO.setDateSign(getDateSign());
 		issueDO.setSearchFromDate(getSearchFromDate());
 		issueDO.setSearchToDate(getSearchToDate());
@@ -260,16 +261,16 @@ public class ViewIssuesAction extends IssueAction
 	public void setDeveloper(String developer) {
 		this.developer = developer;
 	}
-
-	public String getIssueNo() {
-		return issueNo;
+	public Integer getIssueNumber()
+	{
+		return issueNumber;
 	}
-
-	public void setIssueNo(String issueNo) {
-		this.issueNo = issueNo;
+	public void setIssueNumber(Integer issueNumber)
+	{
+		this.issueNumber = issueNumber;
 	}
-
-	public String getSearchFromDate() {
+	public String getSearchFromDate()
+	{
 		return searchFromDate;
 	}
 

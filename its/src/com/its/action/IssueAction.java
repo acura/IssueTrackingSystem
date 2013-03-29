@@ -1,10 +1,17 @@
 package com.its.action;
 
 
+import com.app.context.AppContext;
+import com.its.domain.DropdownOption;
+import com.its.service.IssueService;
+import com.its.service.NewIssueService;
+import com.its.service.ProjectService;
+import com.its.util.GenericUtils;
+import com.opensymphony.xwork2.ActionSupport;
 
-
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,18 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
-import com.app.context.AppContext;
-import com.its.service.AccountService;
-import com.its.service.IssueService;
-import com.its.util.GenericUtils;
-import com.opensymphony.xwork2.ActionSupport;
-
 public class IssueAction extends ActionSupport implements ServletRequestAware, ServletResponseAware
 {
 	
 	private Integer oid;
 	private String developer;
-	private String issueNo;
+	private Integer issueNumber;
 	private String project;
     private String issueDate;
     private Double hours;
@@ -32,36 +33,50 @@ public class IssueAction extends ActionSupport implements ServletRequestAware, S
     private Date   createdDate;
     private Date   lastUpdatedDate;
     
-    public Date getCreatedDate() 
-    {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) 
-	{
-		this.createdDate = createdDate;
-	}
-
-	public Date getLastUpdatedDate() 
-	{
-		return lastUpdatedDate;
-	}
-
-	public void setLastUpdatedDate(Date lastUpdatedDate) 
-	{
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
-
-	private HttpServletRequest servletRequest;
+    private HttpServletRequest servletRequest;
 	private HttpServletResponse servletResponse;
+	
+	 
+    private List<DropdownOption> projectList = new ArrayList<DropdownOption>();
+    private List<DropdownOption> developerList = new ArrayList<DropdownOption>();
+    
+    public ProjectService getProjectService()
+	{
+		return (ProjectService)AppContext.getApplicationContext().getBean("projectService");
+	}
+    
+	public List<DropdownOption> getProjectList() 
+	{
+		return projectList;
+	}
+	
+	public void setProjectList(List<DropdownOption> projectList) 
+	{
+		this.projectList = projectList;
+	}
+	
+	public List<DropdownOption> getDeveloperList() 
+	{
+		return developerList;
+	}
+	
+	public void setDeveloperList(List<DropdownOption> developerList) 
+	{
+		this.developerList = developerList;
+	}
 	
 	public IssueService getIssueService()
 	{
 		return (IssueService)AppContext.getApplicationContext().getBean("issueService");
 	}
-    
+	
+	public NewIssueService getNewIssueService()
+	{
+		return (NewIssueService)AppContext.getApplicationContext().getBean("newIssueService");
+	}
+	
 	public Integer getOid()
-     {
+	{
 		return oid;
 	}
 
@@ -70,80 +85,96 @@ public class IssueAction extends ActionSupport implements ServletRequestAware, S
 		this.oid = oid;
 	}
 
-	public String getProject() 
-	{
-		return project;
-	}
-
-	public String getDeveloper() 
+	public String getDeveloper()
 	{
 		return developer;
 	}
 
-	public void setDeveloper(String developer) 
+	public void setDeveloper(String developer)
 	{
 		this.developer = developer;
 	}
 
-	public String getIssueDate() 
+	public Integer getIssueNumber()
 	{
-		return issueDate;
+		return issueNumber;
 	}
 
-	public void setIssueDate(String issueDate) 
+	public void setIssueNumber(Integer issueNumber)
 	{
-		this.issueDate = issueDate;
+		this.issueNumber = issueNumber;
 	}
 
-	public Double getHours() 
+	public String getProject()
 	{
-		return hours;
+		return project;
 	}
 
-	public void setHours(Double hours) 
-	{
-		this.hours = hours;
-	}
-
-	public void setProject(String project) 
+	public void setProject(String project)
 	{
 		this.project = project;
 	}
 
-	public String getIssueNo() 
+	public String getIssueDate()
 	{
-		
-		return issueNo;
+		return issueDate;
 	}
 
-	public void setIssueNo(String issueNo) 
+	public void setIssueDate(String issueDate)
 	{
-		//String sb =new String("Acura-");
-		//s.append("Acura-");
-		this.issueNo =issueNo;
+		this.issueDate = issueDate;
 	}
 
-	public String getComment() 
+	public Double getHours()
+	{
+		return hours;
+	}
+
+	public void setHours(Double hours)
+	{
+		this.hours = hours;
+	}
+
+	public String getComment()
 	{
 		return comment;
 	}
 
-	public void setComment(String comment) 
+	public void setComment(String comment)
 	{
 		this.comment = comment;
 	}
 
-	public String getActivity() 
+	public String getActivity()
 	{
 		return activity;
 	}
 
-	public void setActivity(String activity) 
+	public void setActivity(String activity)
 	{
 		this.activity = activity;
 	}
 
-	
+	public Date getCreatedDate()
+	{
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate)
+	{
+		this.createdDate = createdDate;
+	}
+
+	public Date getLastUpdatedDate()
+	{
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(Date lastUpdatedDate)
+	{
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+
 	public HttpServletResponse getServletResponse() 
 	{
 		return servletResponse;
@@ -174,9 +205,9 @@ public class IssueAction extends ActionSupport implements ServletRequestAware, S
 	  return GenericUtils.isNotNullOrEmpty(getDeveloper()); 
    }
    
-   public boolean hasIssueNo()
+   public boolean hasIssueNumber()
    {
-   return GenericUtils.isNullOrEmpty(getIssueNo());
+   return GenericUtils.isNotNull(getIssueNumber());
    }
     
    public boolean hasProject()

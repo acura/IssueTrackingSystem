@@ -4,7 +4,9 @@ package com.its.action;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,17 +15,18 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.app.context.AppContext;
+import com.its.domain.DropdownOption;
 import com.its.service.AccountService;
 import com.its.service.DeveloperService;
 import com.its.service.IssueService;
 import com.its.service.NewIssueService;
+import com.its.service.ProjectService;
 import com.its.util.GenericUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class NewIssueAction extends ActionSupport implements ServletRequestAware, ServletResponseAware
 {
-	private Integer oid;
-	private String issueNo;
+	private Integer issueNumber;
 	private String summary;
 	private String detail;
 	private String system;
@@ -35,26 +38,48 @@ public class NewIssueAction extends ActionSupport implements ServletRequestAware
 	private String actualStartDate;
     private String actualEndDate;
     private String loggedBy;
+    private String status;
     private String targetVersion;
     private String assignedTo;
     
+    private List<DropdownOption> projectList = new ArrayList<DropdownOption>();
+    private List<DropdownOption> developerList = new ArrayList<DropdownOption>();
     
-	public Integer getOid() 
+    public ProjectService getProjectService()
 	{
-		return oid;
+		return (ProjectService)AppContext.getApplicationContext().getBean("projectService");
 	}
-	public void setOid(Integer oid) 
+    
+	public List<DropdownOption> getProjectList() 
 	{
-		this.oid = oid;
+		return projectList;
 	}
-	public String getIssueNo() 
+	
+	public void setProjectList(List<DropdownOption> projectList) 
 	{
-		return issueNo;
+		this.projectList = projectList;
 	}
-	public void setIssueNo(String issueNo) 
+	
+	public List<DropdownOption> getDeveloperList() 
 	{
-		this.issueNo = issueNo;
+		return developerList;
 	}
+	
+	public void setDeveloperList(List<DropdownOption> developerList) 
+	{
+		this.developerList = developerList;
+	}
+	
+	public Integer getIssueNumber()
+	{
+		return issueNumber;
+	}
+
+	public void setIssueNumber(Integer issueNumber)
+	{
+		this.issueNumber = issueNumber;
+	}
+
 	public String getSummary() 
 	{
 		return summary;
@@ -147,6 +172,18 @@ public class NewIssueAction extends ActionSupport implements ServletRequestAware
 	{
 		this.loggedBy = loggedBy;
 	}
+	
+	
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+
 	public String getTargetVersion() 
 	{
 		return targetVersion;
@@ -193,25 +230,20 @@ public class NewIssueAction extends ActionSupport implements ServletRequestAware
 		return (NewIssueService)AppContext.getApplicationContext().getBean("newIssueService");
 	}
 	
-	  public boolean hasOid()
-	   {
-		return GenericUtils.isNotNull(getOid()); 
-	   }	 
-	   
-	   public boolean hasSummary()
-	   {
-		  return GenericUtils.isNotNullOrEmpty(getSummary()); 
-	   }
-	   
-	   public boolean hasIssueNo()
-	   {
-	   return GenericUtils.isNotNullOrEmpty(getIssueNo());
-	   }
-	    
-	   public boolean hasDetail()
-	   {
-		return GenericUtils.isNullOrEmpty(getDetail());   
-	   }
+   public boolean hasSummary()
+   {
+	  return GenericUtils.isNotNullOrEmpty(getSummary()); 
+   }
+   
+   public boolean hasIssueNumber()
+   {
+   return GenericUtils.isNotNull(getIssueNumber());
+   }
+    
+   public boolean hasDetail()
+   {
+	return GenericUtils.isNullOrEmpty(getDetail());   
+   }
 
 	  public boolean hasSystem()
 	  {
@@ -228,7 +260,7 @@ public class NewIssueAction extends ActionSupport implements ServletRequestAware
 		return GenericUtils.isNullOrEmpty(getSeverity()); 
 	  }
 	  
-
+	
 	  public boolean hasEstimatedHours()
 	  {
 		return GenericUtils.isNotNull(getEstimatedHours()); 

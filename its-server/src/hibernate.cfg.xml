@@ -34,8 +34,11 @@
 		<property name="hibernate.cache.use_second_level_cache">false</property>
 
 		<mapping resource="portal-account.hbm.xml"/>
-		<mapping resource="issue-track.hbm.xml"/>
+		<mapping resource="issue-details.hbm.xml"/>
 		<mapping resource="its-developer.hbm.xml"/>
+		<mapping resource="its-project.hbm.xml"/>
+		<mapping resource="issue-track.hbm.xml"/>
+		 <mapping resource="issue-note.hbm.xml"/> 
 		
 				
 		</session-factory>    

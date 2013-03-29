@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-nutansss
+
 <html>
 
 <head>
@@ -151,86 +151,95 @@ nutansss
     	<td style="width: 100%;">
     		<div class="scrollableDiv" id="outterDiv" align="left">
 				<table style="width: 100%;">
-				<s:hidden key="oid" value="%{oid}"/>
+				<!--<s:hidden key="oid" value="%{oid}"/>-->
            			<tr>
 						<td style="width: 100%;" valign="top">
 	            			<table style="width: 100%;">
-	            			
-	            			   <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i> Issue No<font color="red">*</font>:</i></td>
-		                         	<td style="width: 51%;">
+	            			 <tr>
+	            					<td style="width: 100%;">
+									<table style="width:100%;">
+	            					 <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Issue Number<font color="red">*</font>:</i></td>
+		                         	 <td style="width: 90%;">
 		                         		<table>
-											<s:textfield key="issueNo" label="" labelSeparator="" maxlength="10" size="20"  onkeyup=""/>		                         		
+											<s:textfield key="issueNumber" label="" labelSeparator="" maxlength="10" size="20"  onchange="capWords(this.value, this.name);" onkeyup="formatForNumeric(this)"/>		                         		
 		                         		</table>
-		                         	</td>
+		                             </td>
 		                        </tr>
-		                        </table>
-		                        </td>
+		                         </table>
+		                             </td>
 		                        </tr>
-		                        
-	            				
-		                         <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Summary<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
-		                         		<table style="width: 100%; textfield-align:left">
+		                      	<tr>
+		                        <td style="width: 100%;">
+		                          <table style="width:100%;">
+	            					 <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Summary<font color="red">*</font>:</i></td>
+		                         	 <td style="width: 90%;">
+		                         		<table>
+							
 		                         			<s:textarea name="summary" cols="80" rows="2"></s:textarea>
 		                         		</table>
+		                             </td>
+		                        </tr>
+		                        </table>
 		                         	</td>
 		                        </tr>
+		                         
 		                        
 		                        <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Detail<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                        <td style="width: 100%;">
+		                          <table style="width:100%;">
+		                        <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Detail<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         		<table>
 		                         			<s:textarea name="detail" cols="80" rows="5"></s:textarea>
 		                         		</table>
 		                         	</td>
 		                        </tr>
-		                        
-		                       <tr>
-		                        <td  style="width:50%;font-weight:bold;text-align:right;"><i>System<font color="red">*</font>:</i></td>
-		                        <td style="width: 50%;">
+		                       </table>
+		                         	</td>
+		                        </tr>
+		                       <tr>  
+		                       <td style="width: 50%;">
+					             <table style="width:100%;">
+					             <tr>
+		                        <td  style="width:10%;font-weight:bold;text-align:right;"><i>System<font color="red">*</font>:</i></td>
+		                        <td style="width: 90%;">
 		                         		<table>
-		                         		<s:select list="#{'':'', 'GynoSoft':'GynoSoft', 'Prolab':'Prolab', 'GenSoft':'GenSoft','prescription':'Prescription','VBS':'VBS','UAS':'UAS','ITS':'ITS'}"
-			                        			key="system" label="" labelSeparator="" multiple="true" ></s:select>
-		                         		<!--<c:choose>
-		                         			<c:when test="${not empty oid}">
-		                         				${selectedProjectNameList}
-			                        		</c:when>
-			                        		<c:otherwise>
-			                        			<s:select list="#{'':'', 'GynoSoft':'GynoSoft', 'Prolab':'Prolab', 'GenSoft':'GenSoft','prescription':'Prescription','VBS':'VBS','UAS':'UAS','ITS':'ITS'}"
-			                        			key="system" label="" labelSeparator="" multiple="true" ></s:select>
-			                        		</c:otherwise>
-			                        		</c:choose>-->
+		                         		<%-- --<s:select list="projectList" listKey="optionId" listValue="optionText"
+			                        			key="system" label="" labelSeparator="" multiple="true" ></s:select>--!>--%>
+		                         		<s:select list="projectList" listKey="optionId" listValue="optionText"
+			                        		key="system" label="" labelSeparator="" ></s:select>	
+		                         
 		                         		</table>
 		                         	</td>
 		                        
 		                        </tr>
-		                         <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Severity<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
-		                         		<table>
-		                         		    
-		                         			<s:select list="#{'':'','Fatal':'Fatal', 'Medium':'Medium', 'Minor':'Minor'}"
-			                        		key="severity" label="" labelSeparator="" ></s:select>	
-		                         		</table>
-		                         	</td>
-		                        </tr>
-		                        
-		                         <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Priority<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
-		                         		<table>
-											<s:select list="#{'':'','High':'High', 'Medium':'Medium', 'Lower':'Lower'}"
-											key="priority" label="" labelSeparator=""></s:select>			                         		
-		                         		</table>
-		                         	</td>
-		                        </tr>
-		                        
-		                        
-		                        <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Estimated Start Date<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                      </table>
+						</td>
+						
+				<td style="width: 50%;">
+					<table style="width:100%;">
+							<tr>
+							<td style="width:10%;font-weight:bold;text-align:right;nowrap:nowrap;"><i>Severity:</i></td>
+							<td style="width:90%;text-align: left;">
+							<table>
+		                         <s:select list="#{'':'','Fatal':'Fatal', 'Medium':'Medium', 'Minor':'Minor'}"
+			                  		key="severity" label="" labelSeparator="" ></s:select>	
+		                    </table>
+							</td>
+							</tr>
+					</table>
+				</td> 
+				</tr>
+				
+				<tr>
+				 <td style="width: 50%;">
+		                         <table style="width:100%;">
+		                           <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Estimated Start Date<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         	<table>
 		                         	  <tr>
 		                         	   <td>
@@ -242,9 +251,29 @@ nutansss
 								   </table>
 								  </td> 
 								</tr>
-								 <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Estimated End Date<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+							    </table>
+				            </td>
+				
+				<td style="width: 50%;">
+					<table style="width:100%;">
+						<tr>
+							<td style="width:10%;font-weight:bold;text-align:right;"><i>Priority:</i></td>
+							<td style="width:90%;text-align: left;">
+							<table>
+								<s:select list="#{'':'','High':'High', 'Medium':'Medium', 'Lower':'Lower'}"
+									key="priority" label="" labelSeparator=""></s:select>			                         		
+		               		</table>
+						    </td>
+						   </tr> 
+					</table>
+				</td>
+	  			</tr>
+		                 <tr>	 
+							<td style="width: 100%;">
+		                         <table style="width:100%;">
+		                             <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Estimated End Date<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         	<table>
 		                         	  <tr>
 		                         	   <td>
@@ -256,21 +285,29 @@ nutansss
 		                        	</table>
 		                         	</td>
 								 </tr>
-		                        
-								   
-		                         
-		                        
+		                        </table>
+				            </td> 
+								 
+		                        <td style="width: 50%;">
+		                         <table style="width:100%;">
 		                        <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Estimated Hours<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                         	<td style="width: 20%;font-weight:bold;text-align:right;"><i>Estimated Hours<font color="red">*</font>:</i></td>
+		                         	<td style="width: 80%;">
 		                         		<table>
-											<s:textfield key="estimatedHours" label="" labelSeparator="" maxlength="10" size="20"  onchange="capWords(this.value, this.name);" onkeyup="formatForNumeric(this)"/>		                         		
+											<s:textfield key="estimatedHours" label="" labelSeparator="" maxlength="20" size="20"  onchange="capWords(this.value, this.name);" onkeyup="formatForNumeric(this)"/>		                         		
 		                         		</table>
 		                         	</td>
 		                        </tr>
-		                        <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Actual Start Date<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                        </table>
+		                         	</td>
+		                   </tr>
+		                       
+		                       <tr>
+		                       <td style="width: 100%;">
+		                         <table style="width:100%;">
+		                           <tr>
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Actual Start Date<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         	<table>
 		                         	  <tr>
 		                         	   <td>
@@ -282,58 +319,101 @@ nutansss
 								   </table>
 		                         	</td>
 								 </tr>
-								     <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Actual End Date<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
-		                         	<table>
-		                         	  <tr>
-		                         	   <td>
-		                         		<table>
-											<s:textfield key="actualEndDate" id="actualEndDate" label="" labelSeparator="" maxlength="10" size="20" onkeyup="formatDate(this);" onblur="validateDate(this, 'fromDateValMessage','TWIN_CENTURIES'); " />		                         		
-		                         		</table>
-		                         		</td>
-								   </tr>
-								   </table>
+								     </table>
 		                         	</td>
-								   </tr>
-								   
+								     
+								     <td style="width: 100%;">
+		                            <table style="width:100%;">
 								    <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Logged By<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                         	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Logged By<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         		<table>
 		                         		    
-		                         			<s:select list="#{'':'','Amol Gadre':'Amol Gadre', 'Mahesh Kalshetty':'Mahesh Kalshetty', 'Mahesh Shivarkar':'Mahesh Shivarkar', 'Ashok Kale':'Ashok Kale','Swati Malode':'Swati Malode','Dolly Bisen':'Dolly Bisen','Mayur kamte':'Mayur kamte','Nutan Chougale':'Nutan Chougale','Supriya Jadhav':'Supriya Jadhav','Pooja Palekar':'Pooja Palekar'}"
+		                         			<s:select list="developerList" listKey="optionId" listValue="optionText"
 			                        		key="loggedBy" label="" labelSeparator="" ></s:select>	
 		                         		</table>
 		                         	</td>
 		                        </tr>
-		                       
-		                        <tr>
-		                        <td style="width: 50%;font-weight:bold;text-align:right;"><i>Target Version<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                       </table>
+		                      </td>
+		              	    </tr>
+								    
+								    
+							    <tr>
+								   <td style="width: 100%;">
+		                            <table style="width:100%;">
+								     <tr>
+		                         		<td style="width: 10%;font-weight:bold;text-align:right;"><i>Actual End Date<font color="red">*</font>:</i></td>
+		                         		<td style="width: 90%;">
+		                         	<table>
+		                         	  <tr>
+		                         		 <td>
+		                         		<table>
+											<s:textfield key="actualEndDate" id="actualEndDate" label="" labelSeparator="" maxlength="10" size="20" onkeyup="formatDate(this);" onblur="validateDate(this, 'fromDateValMessage','TWIN_CENTURIES'); " />		                         		
+		                         		</table>
+		                         		</td>
+								   	 </tr>
+								   </table>
+		                         		</td>
+								    </tr>
+								   </table>
+		                         </td>
+							
+		                      	  <td style="width: 100%;">
+		                          <table style="width:100%;">
+		                        	<tr>
+		                           		<td style="width: 10%;font-weight:bold;text-align:right;"><i>Status<font color="red">*</font>:</i></td>
+		                         		<td style="width: 90%;">
+		                         		<table>
+											<s:textfield key="status" label="" labelSeparator="" maxlength="10" size="20"  onchange="capWords(this.value, this.name);" onkeyup=""/>		                         		
+		                         		</table>
+		                         	   </td>
+		                           </tr>
+		                       	 </table>
+		                       </td>
+		                     </tr>
+		                        
+		                     <tr>
+		                         <td style="width: 100%;">
+		                          <table style="width:100%;">
+		                          <tr>
+		                        	<td style="width: 10%;font-weight:bold;text-align:right;"><i>Target Version<font color="red">*</font>:</i></td>
+		                         	<td style="width: 90%;">
 		                         	<table>
 		                         	  <tr>
 		                         	   <td>
 		                         		<table>
-											<s:textfield key="targetVersion" id="targetVersion" label="" labelSeparator="" maxlength="50" size="20" onkeyup="acceptOnlyCharacter(this);" onblur="validateDate(this, 'fromDateValMessage','TWIN_CENTURIES'); " />		                         		
+											<s:textfield key="targetVersion" id="targetVersion" label="" labelSeparator="" maxlength="50" size="20" onkeyup="" onblur="validateDate(this, 'fromDateValMessage','TWIN_CENTURIES'); " />		                         		
 		                         		</table>
 		                         		</td>
-								   </tr>
+								   	 </tr>
 								   </table>
 		                         </td>
-								  </tr>
+								 </tr>
+		                        </table>
+		                       </td>
 		                        
-		                         <tr>
-		                         	<td style="width: 50%;font-weight:bold;text-align:right;"><i>Assigned To<font color="red">*</font>:</i></td>
-		                         	<td style="width: 50%;">
+		                        <td style="width: 50%;">
+		                          <table style="width:100%;">
+		                           <tr>
+		                         	<td style="width: 20%;font-weight:bold;text-align:right;"><i>Assigned To<font color="red">*</font>:</i></td>
+		                         	<td style="width: 80%;">
 		                         		<table>
 		                         		    
-		                         			<s:select list="#{'':'','Amol Gadre':'Amol Gadre', 'Mahesh Kalshetty':'Mahesh Kalshetty', 'Mahesh Shivarkar':'Mahesh Shivarkar', 'Ashok Kale':'Ashok Kale','Swati Malode':'Swati Malode','Dolly Bisen':'Dolly Bisen','Mayur kamte':'Mayur kamte','Nutan Chougale':'Nutan Chougale','Supriya Jadhav':'Supriya Jadhav','Pooja Palekar':'Pooja Palekar'}"
+		                         			<s:select list="developerList" listKey="optionId" listValue="optionText"
 			                        		key="assignedTo" label="" labelSeparator="" ></s:select>	
 		                         		</table>
 		                         	</td>
-		                        </tr>
+		                          </tr>
+		                        </table>
+		                       </td>
+		                        
+		                      </tr>
+		                      </table>
+		                     </td>
+		                   </tr> 
 				</table>
+						
 			</div>
 		</td>
 	</tr>

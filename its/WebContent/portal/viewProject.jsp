@@ -13,7 +13,7 @@
 		
 			function getDeveloper(oid)
 			{
-				pleaseWait('window.location.href = \'editDeveloper?oid=' + oid + '&isInvokedFromViewDeveloper=true\'');
+				pleaseWait('window.location.href = \'editProject?oid=' + oid + '&isInvokedFromViewProject=true\'');
 				
 			}
 
@@ -39,7 +39,7 @@
     <table width="100%;">
        <tr>
        <td width="100%;">
-		<form name="DeveloperSearchEntriesForm" action="${pageContext.request.contextPath}/its/viewDeveloper.action">
+		<form name="ProjectSearchEntriesForm" action="${pageContext.request.contextPath}/its/viewProject.action">
 		<table class="mainTable" border="0" cellpadding="0" cellspacing="0" >
             <tr>
             	<td class="screenHeader">
@@ -48,7 +48,7 @@
 		            		<td colspan="37">
 		            		</td>
 			                <td style="text-align:right; width: 28%;">
-			                	<span class="screenHeaderSpan">Developer Details</span>
+			                	<span class="screenHeaderSpan">Project Details</span>
 			                </td>
 			               
 		                </tr>
@@ -58,11 +58,11 @@
             
             <tr>
             <td style="text-align:center; vertical-align: top;">
-            <input type="hidden" name="type" value="DeveloperSearch"/>
+            <input type="hidden" name="type" value="ProjectSearch"/>
             <div class="divForJmesa" style="vertical-align: top;" id="outterDiv">
             <jmesa:tableModel
-               id="DeveloperSearch" 
-               items="${developerList}"
+               id="ProjectSearch" 
+               items="${projectList}"
                maxRows="15"
                maxRowsIncrements="15,30,50,100"
                stateAttr="restore"
@@ -71,18 +71,18 @@
                >
                <jmesa:htmlTable caption="" width="100%;" style="background-color:white;">               
                    <jmesa:htmlRow> 
-                       <jmesa:htmlColumn property="oid" title=" Oid" width="20%" >
+                       <jmesa:htmlColumn property="oid" title=" Oid" width="15%" >
                               <div align="center" style="text-align: center;">
                                   ${bean.oid}
                               </div>
                        </jmesa:htmlColumn>
 
-                       <jmesa:htmlColumn property="developerName" title="Developer Name" width="50%"/>
+                       <jmesa:htmlColumn property="projectName" title="Project Name" width="20%"/>
                 
-                       <jmesa:htmlColumn sortable="false" property="" title="Action" filterable="false" width="30%" >
+                       <jmesa:htmlColumn sortable="false" property="" title="Action" filterable="false" width="10%" >
                        
-                       <a href="#" onclick="getDeveloper('${bean.oid}');">Edit</a>
-                       <a href="javascript:confirmDelete('deleteDeveloper?delete=true&oid=${bean.oid}')">Delete</a>
+                       <a href="#" onclick="getProject('${bean.oid}');">Edit</a>
+                       <a href="javascript:confirmDelete('deleteProject?delete=true&oid=${bean.oid}')">Delete</a>
                         
                        </jmesa:htmlColumn>
                    </jmesa:htmlRow>
@@ -108,10 +108,10 @@
     function onInvokeExportAction(id) 
     {
     	var parameterString = $.jmesa.createParameterStringForLimit(id);
-       	location.href = '${pageContext.request.contextPath}/hms/viewDeveloper.action?type=basicExport&' + parameterString;
+       	location.href = '${pageContext.request.contextPath}/hms/viewProject.action?type=basicExport&' + parameterString;
 	}
     changeWidthForJMesaOutterDiv(document.getElementById('outterDiv'));
-    setJmesaTableWidth('#DeveloperSearch');
+    setJmesaTableWidth('#ProjectSearch');
 </script>
 
 </html>

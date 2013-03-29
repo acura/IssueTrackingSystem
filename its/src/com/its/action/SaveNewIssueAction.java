@@ -2,8 +2,11 @@ package com.its.action;
 
 import java.util.Date;
 
+import org.apache.commons.digester.SetRootRule;
+
 import com.its.domain.Issue;
 import com.its.domain.NewIssue;
+import com.its.domain.PortalConstant;
 import com.its.util.DateUtils;
 
 public class SaveNewIssueAction extends NewIssueAction
@@ -26,11 +29,12 @@ public class SaveNewIssueAction extends NewIssueAction
     private NewIssue populateNewIssues()
 	 {
     	NewIssue newIssueobj=new NewIssue();
-    	newIssueobj.setOid(this.getOid());
-    	newIssueobj.setIssueNo(this.getIssueNo() != null ? 
+    	//newIssueobj.setOid(this.getOid());
+    	newIssueobj.setIssueNumber(this.getIssueNumber());
+    	/*newIssueobj.setIssueNo(this.getIssueNo() != null ? 
     			this.getIssueNo().contains("Acura") ? 
     			this.getIssueNo() : 
-    			"Acura-" + this.getIssueNo() : null);
+    			"Acura-" + this.getIssueNo() : null);*/
 
     	newIssueobj.setSummary(this.getSummary());
     	newIssueobj.setDetail(this.getDetail());
@@ -46,11 +50,8 @@ public class SaveNewIssueAction extends NewIssueAction
     	newIssueobj.setEstimatedEndDate(DateUtils.getStringAsDate(this.getEstimatedEndDate()));
     	newIssueobj.setActualStartDate(DateUtils.getStringAsDate(this.getActualStartDate()));
     	newIssueobj.setActualEndDate(DateUtils.getStringAsDate(this.getActualEndDate()));
-    	/*newIssueobj. setEstimatedStartDate(DateUtils.getStringAsDate(this.getEstimatedStartDate()));
-    	newIssueobj.setEstimatedEndDate(DateUtils.getStringAsDate(this.getEstimatedEndDate()));
-    	newIssueobj.setActualStartDate(DateUtils.getStringAsDate(this.getActualStartDate()));
-    	newIssueobj.setActualEndDate(DateUtils.getStringAsDate(this.getActualEndDate()));*/
     	newIssueobj.setLoggedBy(this.getLoggedBy());
+    	newIssueobj.setStatus(this.getStatus());
     	newIssueobj.setTargetVersion(this.getTargetVersion());
     	newIssueobj.setAssignedTo(this.getAssignedTo());
     	//newIssueobj.setCreatedDate(new Date());
@@ -60,14 +61,18 @@ public class SaveNewIssueAction extends NewIssueAction
 	
 	public void validate()
 	{
+		
+	setProjectList(PortalConstant.getProjectList());
+	setDeveloperList(PortalConstant.getDeveloperList());
+	setLoggedBy(this.getLoggedBy());
 	if(!hasSummary())	
 	{
 	addFieldError("summary","Summary is Required");	
 	}
 	
-	if(!hasIssueNo())
+	if(!hasIssueNumber())
 	{
-    addFieldError("issueNo","IssueNo is Required");		
+    addFieldError("issueNumber","IssueNumber is Required");		
 	}
 	
 	if(hasDetail())

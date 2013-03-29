@@ -1,6 +1,7 @@
 package com.its.service;
 //sss
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,10 +35,10 @@ public class IssueService
 	
 	
 	@Transactional(readOnly=true)
-	public Issue getIssueByOid(Integer oid)
+	public Issue getIssueByOid(Integer issueNo)
 	throws DAOException
 	{
-		return issueDAO.getIssueByOid(oid);
+		return issueDAO.getIssueByOid(issueNo);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
@@ -53,5 +54,10 @@ public class IssueService
 		return  issueDAO.getAllIssue(issueDO);
 	}
 	
-	
+	@Transactional(readOnly=true)
+	public List<Issue> getAllLogTimeByIssueNumber(Integer issueNumber)
+	throws DAOException
+	{
+		return 	issueDAO.getAllLogTimeByIssueNumber(issueNumber);
+	}
 }

@@ -10,52 +10,64 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.its.dao.NewIssueDAO;
+import com.its.dao.UpdateDAO;
 import com.its.domain.Account;
 import com.its.domain.Developer;
+import com.its.domain.Issue;
 import com.its.domain.NewIssue;
 
 import com.its.exception.DAOException;
 
-public class NewIssueService 
+public class UpdateService 
 {
 
 	@Autowired
-	private NewIssueDAO newIssueDAO;
+	private UpdateDAO updateDAO;
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Integer saveNewIssues(NewIssue newIssue)
 	throws DAOException
 	{
-		return newIssueDAO.saveNewIssues(newIssue);
+		return updateDAO.saveNewIssues(newIssue);
 	}
 	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Integer saveIssues(Issue issue)
+	throws DAOException
+	{
+		return updateDAO.saveIssues(issue);
+	}
+
+		
+	/*
 	@Transactional(readOnly=true)
-	public NewIssue getNewIssueByOid(Integer issueNumber)
+	public NewIssue getNewIssueByOid(Integer oid)
 	throws DAOException
 	{
 		//return developerDAO .getDeveloperByOid(oid);
-		return newIssueDAO.getNewIssueByOid(issueNumber);
-	}
+		return newIssueDAO.getNewIssueByOid(oid);
+	}*/
+	
 
 	@Transactional(readOnly=true)
 	public Collection<NewIssue> getAllNewIssue()
 	throws DAOException
 	{
-		return newIssueDAO.getAllNewIssue();
+		return updateDAO.getAllNewIssue();
 	}
 	
-	@Transactional(propagation=Propagation.REQUIRED)
-	public boolean deleteNewIssue(Integer issueNumber)
+	@Transactional(readOnly=true)
+	public Collection<Issue> getAllIssue()
 	throws DAOException
 	{
-		return newIssueDAO.deleteNewIssues(issueNumber);
+		return updateDAO.getAllIssue();
 	}
 	
-	@Transactional(propagation=Propagation.REQUIRED)
-	public NewIssue  getNewIssueByissueNumber(Integer issueNumber)
+	
+	/*@Transactional(propagation=Propagation.REQUIRED)
+	public boolean deleteNewIssue(Integer oid)
 	throws DAOException
 	{
-		return newIssueDAO.getNewIssueByissueNumber(issueNumber);
-	}
-
+		return newIssueDAO.deleteNewIssues(oid);
+	}*/
 }

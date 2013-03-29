@@ -3,14 +3,19 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.its.domain.Developer" table="its_developers">
+	<class name="com.its.domain.Note" table="issue_note">
 		
 		<id name="oid" type="int" column="oid">
 	   		<generator class="increment"/>
 	  	</id>
 	  	
-	  	<property name="developerName" type="java.lang.String">
-			<column name="developerName" />			
+	  	<property name="issueNumber" type="java.lang.String">
+			<column name="issue_no" />			
+	  	</property>
+	  	
+	  	
+	  	<property name="note" type="java.lang.String">
+			<column name="note" />			
 	  	</property>
 	  	
 	  	

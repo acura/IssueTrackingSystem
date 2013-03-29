@@ -5,13 +5,9 @@
 <hibernate-mapping>
 	<class name="com.its.domain.NewIssue" table="issue_details">
 		
-		<id name="oid" type="int" column="oid">
-	   		<generator class="increment"/>
-	  	</id>
-	  	
-	  	<property name="issueNo" type="java.lang.String">
+		<id name="issueNumber" type="int">
 			<column name="issue_no" />			
-	  	</property>
+	  	</id>
 	  	
 	  	<property name="summary" type="java.lang.String">
 			<column name="summary" />			
@@ -57,14 +53,17 @@
 			<column name="logged_by" />			
 	  	</property>
 	  	
+	  	<property name="status" type="java.lang.String">
+			<column name="issue_status" />			
+	  	</property>
+	  	
 	  		<property name="targetVersion" type="java.lang.String">
 			<column name=" target_version" />			
 	  	</property>
 	  	
 	  	  <property name="assignedTo" type="java.lang.String">
 			<column name="assinged_to" />			
-	  	</property>  
-	  		
+	  	</property> 
 	  	
 	  	
 	</class>

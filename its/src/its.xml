@@ -52,6 +52,27 @@
   		<result name="success" >/portal/viewDeveloper.jsp</result>
         </action>
         
+        <action name="saveProject" class="com.its.action.SaveProjectAction">
+             <result name="input">/portal/editProject.jsp</result>
+        	<result name="success" type="redirectAction">viewProject</result>
+        </action>
+        
+		
+		<action name="editProject" class="com.its.action.RetrieveProjectAction">
+             <result name="input">/portal/editProject.jsp</result>
+        	<result name="success" >/portal/editProject.jsp</result>
+        </action>
+        
+		
+		<action name="viewProject" class="com.its.action.ViewProjectAction">
+        	<result name="success" >/portal/viewProject.jsp</result>
+        </action>
+        
+		<action name="deleteProject" class="com.its.action.ViewProjectAction">
+  		<result name="success" >/portal/viewProject.jsp</result>
+        </action>
+        
+        
         <action name="editNewIssue" class="com.its.action.RetrieveNewIssueAction">
         	<result name="input">/portal/editNewIssue.jsp</result>
         	<result name="success" >/portal/editNewIssue.jsp</result>
@@ -69,6 +90,22 @@
 		<action name="deleteNewIssue" class="com.its.action.ViewNewIssueAction">
   		<result name="success" >/portal/viewNewIssues.jsp</result>
         </action>
+        
+        <action name="viewIssueDescription" class="com.its.action.ViewIssuesAction">
+        	<result name="success" >/portal/viewIssueDescription.jsp</result>
+        </action>
+        
+        
+        <action name="editUpdate" class="com.its.action.RetrieveNewIssueAction">
+             <result name="input">/portal/editNewIssue.jsp</result>
+        	<result name="success" >/portal/editUpdate.jsp</result>
+        </action>
+        
+         <action name="saveUpdate" class="com.its.action.SaveUpdateAction">
+        	<result name="input">/portal/editUpdate.jsp</result>
+        	<result name="success" type="redirectAction">/portal/editUpdate.jsp</result>
+        </action>
+        
         
         
     </package>
