@@ -3,7 +3,7 @@ package com.its.domain;
 public class IssueDO
 {
 	private String developer;
-	private String issueNo;
+	private Integer issueNumber;
 	private String issueDate;
 	private String dateSign;
 	private String searchFromDate;
@@ -17,13 +17,14 @@ public class IssueDO
 	{
 		this.developer = developer;
 	}
-	public String getIssueNo()
+	
+	public Integer getIssueNumber()
 	{
-		return issueNo;
+		return issueNumber;
 	}
-	public void setIssueNo(String issueNo)
+	public void setIssueNumber(Integer issueNumber)
 	{
-		this.issueNo = issueNo;
+		this.issueNumber = issueNumber;
 	}
 	public String getIssueDate()
 	{
