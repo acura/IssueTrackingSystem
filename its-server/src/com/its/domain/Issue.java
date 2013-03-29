@@ -6,7 +6,7 @@ public class Issue
 {
 	private Integer oid;
 	private String developer;
-	private String issueNo;
+	private Integer issueNumber;
 	private String project;
     private Date  issueDate;
     private Double hours;
@@ -14,8 +14,17 @@ public class Issue
     private String activity;
     private Date   createdDate;
     private Date   lastUpdatedDate;
+    private NewIssue newIssue;
     
-	
+    
+	public NewIssue getNewIssue()
+	{
+		return newIssue;
+	}
+	public void setNewIssue(NewIssue newIssue)
+	{
+		this.newIssue = newIssue;
+	}
 	public Date getCreatedDate() 
 	{
 		return createdDate;
@@ -65,13 +74,13 @@ public class Issue
 	{
 		this.hours = hours;
 	}
-	public String getIssueNo() 
+	public Integer getIssueNumber()
 	{
-		return issueNo;
+		return issueNumber;
 	}
-	public void setIssueNo(String issueNo) 
+	public void setIssueNumber(Integer issueNumber)
 	{
-		this.issueNo = issueNo;
+		this.issueNumber = issueNumber;
 	}
 	public String getProject() 
 	{

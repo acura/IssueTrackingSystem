@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class NewIssue 
 {
-	private Integer oid;
-	private String issueNo;
+	private Integer issueNumber;
 	private String summary;
 	private String detail;
 	private String system;
@@ -17,25 +16,28 @@ public class NewIssue
     private Date actualStartDate;
     private Date actualEndDate;
     private String loggedBy;
+    private String status;
     private String targetVersion;
-     private String assignedTo;
-    
+    private String assignedTo;
+    private Issue issue;
+     
 	
-	public Integer getOid() 
+	public Issue getIssue() 
 	{
-		return oid;
+		return issue;
 	}
-	public void setOid(Integer oid) 
+	public void setIssue(Issue issue)
 	{
-		this.oid = oid;
+		this.issue = issue;
 	}
-	public String getIssueNo() 
+	
+	public Integer getIssueNumber()
 	{
-		return issueNo;
+		return issueNumber;
 	}
-	public void setIssueNo(String issueNo) 
+	public void setIssueNumber(Integer issueNumber)
 	{
-		this.issueNo = issueNo;
+		this.issueNumber = issueNumber;
 	}
 	public String getSummary() 
 	{
@@ -128,6 +130,16 @@ public class NewIssue
 	{
 		this.loggedBy = loggedBy;
 	}
+	
+	public String getStatus()
+	{
+		return status;
+	}
+	public void setStatus(String status) 
+	{
+		this.status = status;
+	}
+	
 	public String getTargetVersion() 
 	{
 		return targetVersion;
