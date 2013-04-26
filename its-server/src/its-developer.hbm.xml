@@ -10,8 +10,13 @@
 	  	</id>
 	  	
 	  	<property name="developerName" type="java.lang.String">
-			<column name="developerName" />			
+			<column name="developer_name" />			
 	  	</property>
+	  	
+	  	<property name="password" type="java.lang.String">
+			<column name="password" />			
+	  	</property>
+	  	
 	  	
 	  	
 	</class>
