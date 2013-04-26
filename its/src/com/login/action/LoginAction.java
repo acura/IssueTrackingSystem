@@ -1,169 +1,131 @@
 package com.login.action;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
-import org.apache.struts2.util.ServletContextAware;
 
-import com.its.action.AccountAction;
-import com.its.domain.Account;
-import com.its.domain.PortalConstant;
-import com.its.util.GenericUtils;
+import com.app.context.AppContext;
+import com.its.domain.Developer;
+import com.its.exception.DAOException;
+import com.its.service.DeveloperService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends AccountAction
-implements ServletRequestAware,ServletResponseAware, ServletContextAware
+public class LoginAction extends ActionSupport 
+implements ServletRequestAware, ServletResponseAware 
 {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
-	private ServletContext servletContext;
-	
-	private String userId;
-	private String password;
-	private String loginValidation;
-	private String signon;
 	
 	
-	public String execute() throws Exception
+	
+	public DeveloperService getDeveloperService()
 	{
-        if (getServletRequest().getParameter("signon") != null)	
-        {
-        	if (!hasUserId())
-    		{
-    			addFieldError("userId", "UserId is Required");
-    		}
-    		if (!hasPassword())
-    		{
-    			addFieldError("password", "Password is Required");
-    		}
-    		if (hasUserId() && hasPassword())
-    		{
-    			Account account = getAccountService().checkValidUser(getUserId(), getPassword());
-    			
-    			if (account != null)
+		return (DeveloperService)AppContext.getApplicationContext().getBean("developerService");
+	}
+
+	public String execute() throws DAOException
+	{
+		if (getServletRequest().getParameter("signOn") != null &&
+			!getServletRequest().getParameter("signOn").isEmpty() &&
+			getServletRequest().getParameter("signOn").equalsIgnoreCase("true"))
+		{
+			String userName = request.getParameter("userName");
+			String password = request.getParameter("password");
+			Developer developer = getDeveloperService().checkValidlogin(userName,password);
+			
+			if(developer != null && 
+			   (developer.getDeveloperName().equals(userName)&&developer.getPassword().equals(password)))
+				{
+					System.out.println("login successfully");
+					return SUCCESS;
+				}
+			else
     			{
-    				getServletRequest().getSession().setAttribute(PortalConstant.ACCOUNT_ID, account.getAccountId());
-    				getServletRequest().getSession().setAttribute("password", account.getPassword());
-    			}
-    			else
-    			{
-    				setUserId("");
+    				setuserName("");
     				addFieldError("loginValidation", "Invalid UserId OR Password");
     				return INPUT;
     			}
-    			
-    			return SUCCESS;
-    		}
-        }
-        
+			
+		}
 		return INPUT;
 	}
+	                                                      
+	private String userName;
+	private String password;
 	
-	/*public void validate()
+	public String getUserName()
 	{
-		if (!hasUserId())
-		{
-			addFieldError("userId", "UserId is Required");
-		}
-		if (!hasPassword())
-		{
-			addFieldError("password", "Password is Required");
-		}
-		if (hasUserId() && hasPassword())
-		{
-			if ()
-			{
-				
-			}
-			else
-			{
-				addFieldError("userId", "Invalid UserId OR Password");
-			}
-		}
-	}*/
-	
-	public String getUserId()
-	{
-		return userId;
+		return userName;
 	}
 
-	public void setUserId(String userId)
+	public void setUserName(String userName) 
 	{
-		this.userId = userId;
+		this.userName = userName;
 	}
 
-	public String getPassword()
+	private boolean hasUsername()
+	{
+		return getUserName() != null && !getUserName().isEmpty();
+	}
+	
+	public String getPassword() 
 	{
 		return password;
 	}
 
-	public void setPassword(String password)
+	public void setPassword(String password) 
 	{
 		this.password = password;
 	}
-	
-	public String getLoginValidation()
+
+	private boolean hasPassword()
 	{
-		return loginValidation;
+		return getPassword()!= null && !getPassword().isEmpty();
 	}
 
-	public void setLoginValidation(String loginValidation) 
+	public void validate()
 	{
-		this.loginValidation = loginValidation;
-	}
-	
-	public String getSignon()
-	{
-		return signon;
-	}
+		
+		if (getServletRequest().getParameter("signOn") != null) 
+		{
+		   if (!hasUsername()) 
+		   {
+			  addFieldError("userName", "User Name required");
+		   }	
+		   if (!hasPassword()) 
+		   {
+			  addFieldError("password", "Password is required");
+		   }
+		}
+		
+ 	}
 
-	public void setSignon(String signon) 
-	{
-		this.signon = signon;
-	}
+		private void setuserName(String string)
+		{
+		// TODO Auto-generated method stub
+		
+	     }
 
-	public boolean hasUserId()
-	{
-		return GenericUtils.isNotNullOrEmpty(getUserId());
-	}
-	public boolean hasPassword()
-	{
-		return GenericUtils.isNotNullOrEmpty(getPassword());
-	}
-	
-	public void setServletRequest(HttpServletRequest request)
-	{
-		this.request = request;
-	}
-
-	public HttpServletRequest getServletRequest()
-	{
-		return request;
-	}
-
-	public void setServletResponse(HttpServletResponse response)
-	{
-		this.response = response;
-	}
-
-	public HttpServletResponse getServletResponse()
-	{
-		return response;
-	}
-	
-    public ServletContext getServletContext() 
+		public void setServletRequest(HttpServletRequest request)
     {
-		return servletContext;
-	}
+        this.request = request;
+    }
 
-	public void setServletContext(ServletContext servletContext) 
-	{
-		this.servletContext = servletContext;
-	}
-	
-	
+    public HttpServletRequest getServletRequest()
+    {
+        return request;
+    }
+
+    public void setServletResponse(HttpServletResponse response)
+    {
+        this.response = response;
+    }
+
+    public HttpServletResponse getServletResponse()
+    {
+        return response;
+    } 
 	
 }
