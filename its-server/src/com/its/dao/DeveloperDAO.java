@@ -106,8 +106,8 @@ public class DeveloperDAO
 		{
 			Session session = sessionFactory.getCurrentSession();
 			Query fromClauseQuery = 
-					session.createQuery("from Developer developer " +
-										"order by developer.oid");
+					session.createQuery("from Developer developer order by developer.oid" );
+								
 			List<Developer> list = fromClauseQuery.list();
 			return list != null && !list.isEmpty() ? list : null;
 		} 
@@ -117,7 +117,28 @@ public class DeveloperDAO
 		}
 	}
 	
-	public Developer checkValidUser(String oid, String password)
+	//public Developer checkValidUser(String oid, String password)
+	//throws DAOException
+	//{
+		//try 
+		//{
+			//Session session = sessionFactory.getCurrentSession();
+			
+			//Query fromClauseQuery = 
+				//	session.createQuery("from Developer developer " +
+					//					"where developer.oid = '" + oid +"' " +
+						//				"and developer.password = '"+ password +"' ");
+			
+			//List<Developer> list = fromClauseQuery.list();
+			//return list != null && !list.isEmpty() ? list.get(0) : null;
+		//} 
+		//catch (Exception e) 
+		//{
+			//throw new DAOException();
+		//}
+	//}
+	
+	public Developer checkValidlogin(String userName, String password)
 	throws DAOException
 	{
 		try 
@@ -126,7 +147,7 @@ public class DeveloperDAO
 			
 			Query fromClauseQuery = 
 					session.createQuery("from Developer developer " +
-										"where developer.oid = '" + oid +"' " +
+										"where developer.developerName = '" + userName +"' " +
 										"and developer.password = '"+ password +"' ");
 			
 			List<Developer> list = fromClauseQuery.list();
@@ -137,6 +158,7 @@ public class DeveloperDAO
 			throw new DAOException();
 		}
 	}
+
 	
 	
 	public boolean deleteDeveloper(Integer oid)
