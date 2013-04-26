@@ -33,13 +33,23 @@ public class DeveloperService
 	}
 	
 
+	//@Transactional(readOnly=true)
+	
+	//public Developer checkValidUser(String oid, String password)
+	//throws DAOException
+	//{
+		//return developerDAO.checkValidUser(oid, password);
+	//}
+	
+
 	@Transactional(readOnly=true)
 	
-	public Developer checkValidUser(String oid, String password)
+	public Developer checkValidlogin(String userName, String password)
 	throws DAOException
 	{
-		return developerDAO.checkValidUser(oid, password);
+		return developerDAO.checkValidlogin(userName, password);
 	}
+		
 		
 	
 	@Transactional(readOnly=true)
@@ -88,6 +98,9 @@ public class DeveloperService
 		
 		return developerDropdownOptions;
 	}
+
+
+	
 
 	
 }
