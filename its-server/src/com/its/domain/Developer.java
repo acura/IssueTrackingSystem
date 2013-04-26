@@ -4,8 +4,9 @@ package com.its.domain;
 public class Developer
 {
 	private Integer oid;
-	private String developerName;
+	public String developerName;
 	private String password;
+	
 	public String getPassword() {
 		return password;
 	}
